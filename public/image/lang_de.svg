@@ -1,0 +1,15 @@
+<svg width="64" height="44" viewBox="0 0 64 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g id="Flag_Germany_Custom">
+    <g clip-path="url(#clip0_6640_170308)">
+    <path id="Vector" d="M0 15H64V30H0V15Z" fill="#EC1C24"/>
+    <path id="Vector_2" d="M0 30H64V45H0V30Z" fill="#F9CB38"/>
+    <path id="Vector_3" d="M0 0H64V15H0V0Z" fill="#243037"/>
+    </g>
+    </g>
+    <defs>
+    <clipPath id="clip0_6640_170308">
+    <rect width="64" height="44" rx="8" fill="white"/>
+    </clipPath>
+    </defs>
+    </svg>
+    

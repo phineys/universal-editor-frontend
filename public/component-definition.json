@@ -1,0 +1,54 @@
+{
+  "groups": [
+    {
+      "title": "General Components",
+      "id": "general",
+      "components": [
+        {
+          "title": "Hero",
+          "id": "hero",
+          "plugins": {
+            "aem": {
+              "page": {
+                "resourceType": "pf/components/hero"
+              }
+            }
+          }
+        },
+        {
+          "title": "Key Facts",
+          "id": "keyfacts",
+          "plugins": {
+            "aem": {
+              "page": {
+                "resourceType": "pf/components/keyfacts"
+              }
+            }
+          }
+        },
+        {
+          "title": "Icon Cards",
+          "id": "iconcards",
+          "plugins": {
+            "aem": {
+              "page": {
+                "resourceType": "pf/components/iconcards"
+              }
+            }
+          }
+        },
+        {
+          "title": "Icon Card",
+          "id": "iconcard",
+          "plugins": {
+            "aem": {
+              "page": {
+                "resourceType": "pf/components/iconcard"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,159 @@
+[
+  {
+    "id": "hero",
+    "fields": [
+      {
+        "component": "text-input",
+        "name": "title",
+        "label": "Title",
+        "valueType": "string"
+      },
+      {
+        "component": "text-area",
+        "name": "text",
+        "label": "Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "iconcards",
+    "fields": [
+      {
+        "component": "text-input",
+        "name": "containerTitle",
+        "label": "Container Title",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "iconCard",
+    "fields": [
+      {
+        "component": "text-input",
+        "name": "title",
+        "label": "Title",
+        "valueType": "string"
+      },
+      {
+        "component": "text-input",
+        "name": "text",
+        "label": "text",
+        "valueType": "string"
+      },
+      {
+        "component": "select",
+        "name": "icon",
+        "value": "h1",
+        "label": "Icon",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Click",
+            "value": "/apps/pf/clientlibs/clientlib-base/resources/icons/click.svg",
+            "icon": "/apps/pf/clientlibs/clientlib-base/resources/icons/dialogIcons/click.svg"
+          },
+          {
+            "name": "Flipchart",
+            "value": "/apps/pf/clientlibs/clientlib-base/resources/icons/flipchart.svg"
+          },
+          {
+            "name": "Input",
+            "value": "/apps/pf/clientlibs/clientlib-base/resources/icons/input.svg"
+          },
+          {
+            "name": "Lightbulb",
+            "value": "/apps/pf/clientlibs/clientlib-base/resources/icons/lightbulb.svg"
+          }
+        ]
+      }
+    ]
+  },
+{
+  "id": "keyfacts",
+  "fields": [
+      {
+          "component": "tab",
+          "label": "Image",
+          "name": "tabImage"
+      },
+      {
+          "component": "reference",
+          "name": "image",
+          "label": "Image",
+          "valueType": "string"
+      },
+      {
+          "component": "tab",
+          "label": "Fact 1",
+          "name": "tab1"
+      },
+      {
+          "component": "text-input",
+          "name": "firstTitle",
+          "label": "First Title",
+          "valueType": "string"
+      },
+      {
+          "component": "text-input",
+          "name": "firstText",
+          "label": "First Text",
+          "valueType": "string"
+      },
+      {
+          "component": "tab",
+          "label": "Fact 2",
+          "name": "tab2"
+      },
+      {
+          "component": "text-input",
+          "name": "secondTitle",
+          "label": "Second Title",
+          "valueType": "string"
+      },
+      {
+          "component": "text-input",
+          "name": "secondText",
+          "label": "Second Text",
+          "valueType": "string"
+      },
+      {
+          "component": "tab",
+          "label": "Fact 3",
+          "name": "tab3"
+      },
+      {
+          "component": "text-input",
+          "name": "thirdTitle",
+          "label": "Third Title",
+          "valueType": "string"
+      },
+      {
+          "component": "text-input",
+          "name": "thirdText",
+          "label": "Third Text",
+          "valueType": "string"
+      },
+      {
+          "component": "tab",
+          "label": "Fact 4",
+          "name": "tab4"
+      },
+      {
+          "component": "text-input",
+          "name": "fourthTitle",
+          "label": "Fourth Title",
+          "valueType": "string"
+      },
+      {
+          "component": "text-input",
+          "name": "fourthText",
+          "label": "Fourth Text",
+          "valueType": "string"
+      }
+  ]
+}
+
+]
+
