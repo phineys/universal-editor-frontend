@@ -56,7 +56,13 @@ export default defineNuxtConfig({
     }
   },
 
-  modules: ['@nuxt/image', '@nuxtjs/i18n', '@nuxtjs/storybook', "@nuxthub/core"],
+  modules: [
+    '@nuxt/image',
+    '@nuxtjs/i18n',
+    '@nuxtjs/storybook',
+    '@nuxthub/core',
+    'nuxt-cron'
+  ],
   i18n: {
     lazy: true,
     langDir: 'locales',
