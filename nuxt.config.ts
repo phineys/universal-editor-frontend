@@ -76,6 +76,26 @@ export default defineNuxtConfig({
       useCookie: true,
       cookieKey: 'i18n_redirected',
       redirectOn: 'root' // recommended
+    },
+
+    buildModules: [
+      'nuxt-cron',
+    ],
+    cron: {
+      jobs: [
+        // {
+        //   name: 'daily-job-run-python',
+        //   // Runs every day at 3:00 AM
+        //   schedule: '0 3 * * *',
+        //   handler: '~/cron/run-python-script.js'
+        // },
+        {
+          name: 'daily-job-run-js',
+          // Runs every day at 3:00 AM
+          schedule: '0 3 * * *',
+          handler: '~/cron/run-js-script.js'
+        },
+      ]
     }
-  }
+  },
 })
