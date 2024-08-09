@@ -4,7 +4,10 @@ export const fetchData = async (path: String) => {
   }.tidy.infinity.json`
   try {
     const data = await fetch(url, {
-      credentials: 'include'
+      credentials: 'include',
+      headers: {
+        "Authorization": `${useRuntimeConfig().public.devCredentials}`
+      },
     })
     const json = await data.json()
     return json
