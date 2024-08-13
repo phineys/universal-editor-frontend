@@ -23,8 +23,6 @@ let factsData = ref(await fetchData(props.resource))
 //     fourthText?: string
 //     image?: Image
 //   }>()
-
-console.log("factsData", factsData)
 </script>
 
 <template>
