@@ -64,9 +64,9 @@ let factsData = ref(await fetchData(props.resource))
             data-aue-type="media"
             data-aue-label="Image">
             <nuxt-picture
-                v-if="factsData.fileReference"
+                v-if="factsData.image"
                 format="png,svg,jpeg,jpg"
-                :src="`${runtimeConfig?.public?.devAuthor}${factsData.fileReference}`"
+                :src="`${runtimeConfig?.public?.devAuthor}${factsData.image}`"
                 :alt="factsData.alt"
                 :width="320"
                 :height="320"
