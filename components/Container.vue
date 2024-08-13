@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { fetchData } from '@/service/getContent'
-import Hero from '@/components/Hero.vue',
+import Hero from '@/components/Hero.vue'
 import KeyFacts from '@/components/KeyFacts.vue'
 import { ref, onMounted } from 'vue'
 
