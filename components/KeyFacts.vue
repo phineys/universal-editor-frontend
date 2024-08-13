@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { fetchData } from '@/service/getContent'
 
+const runtimeConfig = useRuntimeConfig()
+
 const props = defineProps({
   resource: {
     type: String,
@@ -64,7 +66,7 @@ let factsData = ref(await fetchData(props.resource))
             <nuxt-picture
                 v-if="factsData.fileReference"
                 provider="customProvider"
-                :src="'https://localhost:8443'+factsData.fileReference"
+                :src="`${runtimeConfig?.public?.devAuthor}${factsData.fileReference}`"
                 :alt="factsData.alt"
                 :width="320"
                 :height="320"
