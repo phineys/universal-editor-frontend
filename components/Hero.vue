@@ -28,13 +28,12 @@ let heroData = ref(await fetchData(props.resource))
     >
       {{ heroData.title }}
     </h2>
-    <p
+    <span
       class="hero__description mx-auto mt-6 text-xl leading-relaxed text-white"
       data-aue-prop="text"
       data-aue-type="richtext"
       data-aue-label="text"
-    >
-      {{ heroData.text }}
-    </p>
+      v-html="heroData.text">
+  </span>
   </div>
 </template>
