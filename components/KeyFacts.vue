@@ -23,6 +23,8 @@ let factsData = ref(await fetchData(props.resource))
 //     fourthText?: string
 //     image?: Image
 //   }>()
+
+console.log("factsData", factsData)
 </script>
 
 <template>
@@ -65,7 +67,7 @@ let factsData = ref(await fetchData(props.resource))
             data-aue-label="Image">
             <nuxt-picture
                 v-if="factsData.fileReference"
-                provider="customProvider"
+                format="png,svg,jpeg,jpg"
                 :src="`${runtimeConfig?.public?.devAuthor}${factsData.fileReference}`"
                 :alt="factsData.alt"
                 :width="320"
