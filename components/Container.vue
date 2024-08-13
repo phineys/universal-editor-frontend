@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { fetchData } from '@/service/getContent'
-import Hero from '@/components/Hero.vue'
+import Hero from '@/components/Hero.vue',
+import KeyFacts from '@/components/KeyFacts.vue'
 import { ref, onMounted } from 'vue'
 
 const props = defineProps({
@@ -54,7 +55,8 @@ function extractAndRemoveNestedObjects(obj: JSONObject): NestedObject[] {
 const nestedObjects = extractAndRemoveNestedObjects(containerData.value)
 
 const nameToComponent = {
-  'pf/components/hero': Hero
+  'pf/components/hero': Hero,
+  'pf/components/keyfacts': KeyFacts
 }
 </script>
 
