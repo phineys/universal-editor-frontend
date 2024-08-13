@@ -7,7 +7,8 @@ export const fetchData = async (path: String) => {
       method: 'GET',
       credentials: 'include',
       headers: {
-        Authorization: `${useRuntimeConfig().public.devCredentials}`
+        Authorization: `${useRuntimeConfig().public.devCredentials}`,
+        'Content-Type': 'application/json',
       }
     })
     const json = await data.json()
