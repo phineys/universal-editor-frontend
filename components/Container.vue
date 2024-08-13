@@ -64,7 +64,7 @@ const nameToComponent = {
     data-aue-filter="container"
     data-aue-model="container"
     data-aue-behavior="container"
-    data-aue-resource="urn:aemconnection:/content/pf/us/de/jcr:content/root/container/container/container"
+    :data-aue-resource="props.resource"
     data-aue-type="container"
   >
     <component
