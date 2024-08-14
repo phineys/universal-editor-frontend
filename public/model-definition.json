@@ -17,6 +17,23 @@
     ]
   },
   {
+    "id": "textimage",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "image",
+        "label": "Image",
+        "valueType": "string"
+    },
+      {
+        "component": "text-input",
+        "name": "alt",
+        "label": "Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "iconcards",
     "fields": [
       {

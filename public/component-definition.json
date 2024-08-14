@@ -27,6 +27,17 @@
           }
         },
         {
+          "title": "TextImage",
+          "id": "textimage",
+          "plugins": {
+            "aem": {
+              "page": {
+                "resourceType": "pf/components/textimage"
+              }
+            }
+          }
+        },
+        {
           "title": "Icon Cards",
           "id": "iconcards",
           "plugins": {
