@@ -7,6 +7,7 @@ export default defineNuxtConfig({
     // Keys within public, will be also exposed to the client-side
     public: {
       devAuthor: process.env.DEFAULT_AUTHOR_HOST || 'https://localhost:4502',
+      devPublisher: process.env.DEFAULT_PUBLISHER_HOST || 'https://localhost:4502',
       devCredentials:
         process.env.DEFAULT_AUTHOR_CREDENTIALS || 'Basic YWRtaW46YWRtaW4='
     }
