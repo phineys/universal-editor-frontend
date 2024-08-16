@@ -9,7 +9,11 @@ export default defineNuxtConfig({
       devAuthor: process.env.DEFAULT_AUTHOR_HOST || 'https://localhost:4502',
       devPublisher: process.env.DEFAULT_PUBLISHER_HOST || 'https://localhost:4502',
       devCredentials:
-        process.env.DEFAULT_AUTHOR_CREDENTIALS || 'Basic YWRtaW46YWRtaW4='
+        process.env.DEFAULT_AUTHOR_CREDENTIALS || 'Basic YWRtaW46YWRtaW4=',
+        aemPublicKey: process.env.AEM_PUBLIC_KEY || '',
+        aemPrivateKey: process.env.AEM_PRIVATE_KEY || '',
+        aemClientId: process.env.AEM_CLIENT_ID || '',
+        aemImsEndpoint: process.env.IMS_ENDPOINT || ''
     }
   },
   devtools: { enabled: true },

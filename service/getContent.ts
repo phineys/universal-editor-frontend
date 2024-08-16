@@ -1,33 +1,34 @@
 export const fetchData = async (path: String) => {
+  var isInFrame = null;
+  var iframeUrl = null;
+  var token = null;
+  var fetchOptions = {};
 
-  var isInFrame = null
-  var iframeUrl = null
-
-if (typeof window !== 'undefined') {
-    // Prüfen ob die Seite in einem iFrame geladen wurde
-    isInFrame = window.self !== window.top
-    
-    // URL des iFrames ermitteln
-    iframeUrl = document.referrer || 'Keine URL verfügbar'
+  if (typeof window !== 'undefined') {
+    isInFrame = window.self !== window.top;
+    iframeUrl = document.referrer || 'Keine URL verfügbar';
   }
 
-  console.log('isInFrame: ', isInFrame)
-  console.log('iframeUrl: ', iframeUrl)
+  const isUE = isInFrame && iframeUrl === 'https://experience.adobe.com/' ? true : false;
 
-  let url = `${useRuntimeConfig().public.devAuthor}/${
-    path.split(':/')[1]
-  }.tidy.infinity.json`
-  try {
-    const data = await fetch(url, {
-      // credentials: 'include',
+  const url = `${isUE ? useRuntimeConfig().public.devAuthor : useRuntimeConfig().public.devPublisher}/${path.split(':/')[1]}.tidy.infinity.json`;
+
+  if (isUE) {
+    const { data, error } = await useFetch('/api/generateToken');
+    token = data?.value?.token;
+    console.log('TOKEN: ', token);
+    fetchOptions = {
       headers: {
-        Authorization: useRuntimeConfig().public.devCredentials
-      }
-    })
-    const json = await data.json()
-    console.log('DATA: ', json)
-    return json
-  } catch (error) {
-    return 'ERROR'
+        Authorization: `Bearer ${token}`,
+      },
+    };
   }
-}
+  try {
+    const data = await fetch(url, fetchOptions);
+    const json = await data.json();
+    console.log('DATA: ', json);
+    return json;
+  } catch (error) {
+    return 'ERROR';
+  }
+};
