@@ -22,7 +22,7 @@ export default defineEventHandler(async (event: H3Event) => {
     iss: clientId,
     sub: clientId,
     aud: `https://${imsEndpoint}/c/${clientId}`,
-    exp: Math.floor(Date.now() / 1000) + 24 * 60 * 60, // 24 hours expiration
+    exp: Math.floor(Date.now() / 1000) + 24 * 60 * 60,
   };
 
   // Define options for JWT
