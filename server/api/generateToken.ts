@@ -3,9 +3,9 @@ import jwt from 'jsonwebtoken';
 
 export default defineEventHandler(async (event: H3Event) => {
   console.log('GENERATE TOKEN EVENT');
-  // const clientId = useRuntimeConfig().public.aemClientId;
-  // const imsEndpoint = useRuntimeConfig().public.aemImsEndpoint;
-  // const privateKey = useRuntimeConfig().public.aemPrivateKey;
+  const clientId = useRuntimeConfig().public.aemClientId;
+  const imsEndpoint = useRuntimeConfig().public.aemImsEndpoint;
+  const privateKey = useRuntimeConfig().public.aemPrivateKey;
 
   // // Define the payload
   // const payload = {
