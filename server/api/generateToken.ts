@@ -11,7 +11,6 @@ export default defineEventHandler(async (event: H3Event) => {
   let formatedKey = privateKey.replace(/\\n/g, '\n');
 
   formatedKey = formatedKey.replace(/\\r/g, '');
-  // console.log('PrivateKeye: ', privateKeye);
 
   // Define the payload
   const payload = {
@@ -27,11 +26,9 @@ export default defineEventHandler(async (event: H3Event) => {
     //   expiresIn: Math.floor(Date.now() / 1000) + (24 * 60 * 60),
   };
 
-  // const token = jwt.sign(payload, formatedKey, options);
+  const token = jwt.sign(payload, formatedKey, options);
 
   return {
-    token: "token",
-    payload: JSON.stringify(payload),
-    options: JSON.stringify(options),
+    token,
   };
 });
