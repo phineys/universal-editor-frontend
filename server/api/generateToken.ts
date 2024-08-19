@@ -7,10 +7,11 @@ export default defineEventHandler(async (event: H3Event) => {
   const imsEndpoint = useRuntimeConfig().public.aemImsEndpoint;
   const privateKey = useRuntimeConfig().public.aemPrivateKey;
 
-  //format string
-  let formatedKey = privateKey.replace(/\\n/g, '\n');
+  const formatedKey = privateKey.replace(/\\n/g, '\n').replace(/\\r/g, '');
 
-  formatedKey = formatedKey.replace(/\\r/g, '');
+  if (!formatedKey) {
+    throw new Error('Private key is not defined or formatted incorrectly');
+  }
 
   // Define the payload
   const payload = {
