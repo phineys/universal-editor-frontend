@@ -31,5 +31,7 @@ export default defineEventHandler(async (event: H3Event) => {
 
   return {
     token: 'token',
+    clientId: clientId,
+    imsEndpoint: imsEndpoint,
   };
 });
