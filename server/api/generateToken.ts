@@ -1,5 +1,5 @@
 import { H3Event } from 'h3';
-import jwt from 'jsonwebtoken';
+import  jwt from 'jsonwebtoken';
 
 export default defineEventHandler(async (event: H3Event) => {
   console.log('GENERATE TOKEN EVENT');
@@ -27,7 +27,7 @@ export default defineEventHandler(async (event: H3Event) => {
 
   // Define options for JWT
   const options = {
-    algorithm: 'RS256',
+    algorithm: 'RS256' as const,
   };
 
   try {
