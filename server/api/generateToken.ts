@@ -31,7 +31,10 @@ export default defineEventHandler(async (event: H3Event) => {
   };
 
   try {
-    const token = jwt.sign(JSON.stringify(payload), formatedKey, options);
+    const token = jwt.decode(
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmb28iOiJiYXIiLCJpYXQiOjE3MjQwNjk2Njl9.lKfR7i3VP0TV5F63LJ5K17xXWUiuIeXKf7W0H2pu-ys'
+    );
+    // const token = jwt.sign(JSON.stringify(payload), formatedKey, options);
     // var token = jwt.sign({ foo: 'bar' }, 'shhhhh');
     return {
       token: 'tokken',
