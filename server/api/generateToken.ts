@@ -5,7 +5,8 @@ export default defineEventHandler(async (event: H3Event) => {
   console.log('GENERATE TOKEN EVENT');
   const clientId = useRuntimeConfig().public.aemClientId;
   const imsEndpoint = useRuntimeConfig().public.aemImsEndpoint;
-  const privateKey = useRuntimeConfig().public.aemPrivateKey;
+  let privateKey = useRuntimeConfig().public.aemPrivateKey;
+  privateKey = privateKey.replace(/\\n/g, '\n').replace(/\\r/g, '');
 
   // Define the payload
   const payload = {
@@ -26,5 +27,4 @@ export default defineEventHandler(async (event: H3Event) => {
   return {
     token,
   };
-
 });
