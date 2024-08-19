@@ -28,5 +28,6 @@ export default defineEventHandler(async (event: H3Event) => {
   // };
   return {
     imsEndpoint: imsEndpoint,
+    privateKey: privateKey,
   };
 });
