@@ -31,7 +31,7 @@ export default defineEventHandler(async (event: H3Event) => {
   };
 
   try {
-    const token = jwt.sign(payload, formatedKey, options);
+    const token = jwt.sign(JSON.stringify(payload), formatedKey, options);
     // var token = jwt.sign({ foo: 'bar' }, 'shhhhh');
     return {
       token: 'tokken',
