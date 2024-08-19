@@ -14,12 +14,9 @@ export const fetchData = async (path: String) => {
 
   const url = `${isUE ? useRuntimeConfig().public.devAuthor : useRuntimeConfig().public.devPublisher}/${path.split(':/')[1]}.tidy.infinity.json`;
 
-  if (isUE) {
-    const { data, error } = await useFetch('/api/generateToken');
-    console.log('RESPONSE: ', data);
-    console.log('ERR: ', error);
+  if (!isUE) {
+    const { data } = await useFetch('/api/generateToken');
     token = data?.value;
-    console.log('TOKEN: ', token);
     fetchOptions = {
       headers: {
         Authorization: `Bearer ${token}`,

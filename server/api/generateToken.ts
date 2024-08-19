@@ -1,51 +1,42 @@
 import { H3Event } from 'h3';
-import jwt from 'jsonwebtoken';
+import * as jose from 'jose';
 
 export default defineEventHandler(async (event: H3Event) => {
   console.log('GENERATE TOKEN EVENT');
   const clientId = useRuntimeConfig().public.aemClientId;
   const imsEndpoint = useRuntimeConfig().public.aemImsEndpoint;
-  const privateKey = useRuntimeConfig().public.aemPrivateKey;
+  const aemPrivateKey = useRuntimeConfig().public.aemPrivateKey;
 
-
-  if (!clientId || !imsEndpoint || !privateKey) {
+  if (!clientId || !imsEndpoint || !aemPrivateKey) {
     throw new Error('Missing configuration values');
   }
 
-  const formatedKey = privateKey.replace(/\\n/g, '\n').replace(/\\r/g, '');
+  const formattedKey = aemPrivateKey.replace(/\\n/g, '\n').replace(/\\r/g, '');
 
-  if (!formatedKey) {
+  if (!formattedKey) {
     throw new Error('Private key is not defined or formatted incorrectly');
   }
 
-  console.log('BEFOREPAYLOAD');
-
-  // Define the payload
   const payload = {
     iss: clientId,
     sub: clientId,
     aud: `https://${imsEndpoint}/c/${clientId}`,
     exp: Math.floor(Date.now() / 1000) + 24 * 60 * 60,
   };
-
-  console.log('PAYLOAD: ', payload);
-
-  // Define options for JWT
-  const options = {
-    algorithm: 'RS256' as const,
-  };
-
-  console.log('OPTIONS: ', options);
+  const alg = 'RS256';
+  const privateKey = await jose.importPKCS8(formattedKey, alg);
 
   try {
-    console.log('BEFORESIGN');
-    const token = jwt.sign(JSON.stringify(payload), formatedKey, options);
-    // var token = jwt.sign();
-    console.log('TOKENROUTE: ', token);
+    const token = await new jose.SignJWT(payload)
+      .setProtectedHeader({ alg })
+      .setIssuedAt(new Date())
+      .setIssuer(clientId)
+      .setExpirationTime('24h')
+      .sign(privateKey);
 
     return token;
   } catch (error) {
-    console.error('Error generating JWT:', error);
-    throw new Error('Failed to generate token');
+    console.error('Error generating token:', error);
+    throw new Error('Token generation failed');
   }
 });
