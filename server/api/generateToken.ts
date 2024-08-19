@@ -27,9 +27,9 @@ export default defineEventHandler(async (event: H3Event) => {
     //   expiresIn: Math.floor(Date.now() / 1000) + (24 * 60 * 60),
   };
 
-  const token = jwt.sign(payload, formatedKey, options);
+  // const token = jwt.sign(payload, formatedKey, options);
 
   return {
-    token,
+    token: 'token',
   };
 });
