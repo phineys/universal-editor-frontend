@@ -10,6 +10,7 @@ export const fetchData = async (path: String) => {
   }
 
   const isUE = isInFrame && iframeUrl === 'https://experience.adobe.com/' ? true : false;
+  console.log('ISUE: ', isUE);
 
   const url = `${isUE ? useRuntimeConfig().public.devAuthor : useRuntimeConfig().public.devPublisher}/${path.split(':/')[1]}.tidy.infinity.json`;
 
