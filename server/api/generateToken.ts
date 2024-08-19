@@ -1,5 +1,5 @@
 import { H3Event } from 'h3';
-import  jwt from 'jsonwebtoken';
+import jwt from 'jsonwebtoken';
 
 export default defineEventHandler(async (event: H3Event) => {
   console.log('GENERATE TOKEN EVENT');
@@ -31,7 +31,8 @@ export default defineEventHandler(async (event: H3Event) => {
   };
 
   try {
-    const token = jwt.sign(payload, formatedKey, options);
+    // const token = jwt.sign(payload, formatedKey, options);
+    var token = jwt.sign({ foo: 'bar' }, 'shhhhh');
     return {
       token,
     };
