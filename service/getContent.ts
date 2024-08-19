@@ -16,6 +16,8 @@ export const fetchData = async (path: String) => {
 
   if (isUE) {
     const { data, error } = await useFetch('/api/generateToken');
+    console.log('RESPONSE: ', data);
+    console.log('ERR: ', error);
     token = data?.value;
     console.log('TOKEN: ', token);
     fetchOptions = {

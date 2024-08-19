@@ -7,6 +7,7 @@ export default defineEventHandler(async (event: H3Event) => {
   const imsEndpoint = useRuntimeConfig().public.aemImsEndpoint;
   const privateKey = useRuntimeConfig().public.aemPrivateKey;
 
+
   if (!clientId || !imsEndpoint || !privateKey) {
     throw new Error('Missing configuration values');
   }
@@ -16,6 +17,8 @@ export default defineEventHandler(async (event: H3Event) => {
   if (!formatedKey) {
     throw new Error('Private key is not defined or formatted incorrectly');
   }
+
+  console.log('BEFOREPAYLOAD');
 
   // Define the payload
   const payload = {
@@ -35,8 +38,11 @@ export default defineEventHandler(async (event: H3Event) => {
   console.log('OPTIONS: ', options);
 
   try {
+    console.log('BEFORESIGN');
     const token = jwt.sign(JSON.stringify(payload), formatedKey, options);
     // var token = jwt.sign();
+    console.log('TOKENROUTE: ', token);
+
     return token;
   } catch (error) {
     console.error('Error generating JWT:', error);
