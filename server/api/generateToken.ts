@@ -4,8 +4,8 @@ import jwt from 'jsonwebtoken';
 export default defineEventHandler(async (event: H3Event) => {
   console.log('GENERATE TOKEN EVENT');
   const clientId = useRuntimeConfig().public.aemClientId;
-  const imsEndpoint = useRuntimeConfig().public.aemImsEndpoint;
-  const privateKey = useRuntimeConfig().public.aemPrivateKey;
+  const imsEndpoint = formatKey(useRuntimeConfig().public.aemImsEndpoint);
+  const privateKey = formatKey(useRuntimeConfig().public.aemPrivateKey);
 
   // // Define the payload
   // const payload = {
@@ -31,3 +31,13 @@ export default defineEventHandler(async (event: H3Event) => {
     privateKey: privateKey,
   };
 });
+
+function formatKey(input: string) {
+  // Ersetze \r\n mit einem tatsächlichen Zeilenumbruch
+  let formattedKey = input.replace(/\\r\\n/g, '\n');
+
+  // Ersetze \r und \n einzeln, falls sie noch vorhanden sind
+  formattedKey = formattedKey.replace(/\\r/g, '\n').replace(/\\n/g, '\n');
+
+  return formattedKey;
+}
