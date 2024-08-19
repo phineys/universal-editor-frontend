@@ -30,8 +30,8 @@ export default defineEventHandler(async (event: H3Event) => {
   // const token = jwt.sign(payload, formatedKey, options);
 
   return {
-    token: 'token',
-    clientId: clientId,
-    imsEndpoint: imsEndpoint,
+    token: "token",
+    payload: JSON.stringify(payload),
+    options: JSON.stringify(options),
   };
 });
