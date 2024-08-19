@@ -26,5 +26,7 @@ export default defineEventHandler(async (event: H3Event) => {
   // return {
   //   token,
   // };
-  return 'Token';
+  return {
+    imsEndpoint: imsEndpoint,
+  };
 });
