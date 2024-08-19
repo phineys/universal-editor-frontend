@@ -5,8 +5,8 @@ export default defineEventHandler(async (event: H3Event) => {
   console.log('GENERATE TOKEN EVENT');
   const clientId = useRuntimeConfig().public.aemClientId;
   const imsEndpoint = useRuntimeConfig().public.aemImsEndpoint;
-  let privateKey = useRuntimeConfig().public.aemPrivateKey;
-  privateKey = privateKey.replace(/\\n/g, '\n').replace(/\\r/g, '');
+  const privateKey = useRuntimeConfig().public.aemPrivateKey;
+
 
   // Define the payload
   const payload = {
@@ -22,7 +22,7 @@ export default defineEventHandler(async (event: H3Event) => {
     //   expiresIn: Math.floor(Date.now() / 1000) + (24 * 60 * 60),
   };
 
-  const token = jwt.sign(payload, privateKey, options);
+  const token = jwt.sign(payload, privateKey.toString(), options);
 
   return {
     token,
