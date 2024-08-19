@@ -27,9 +27,13 @@ export default defineEventHandler(async (event: H3Event) => {
     //   expiresIn: Math.floor(Date.now() / 1000) + (24 * 60 * 60),
   };
 
-  const token = jwt.sign(payload, formatedKey, options);
-
-  return {
-    token,
-  };
+  try {
+    const token = jwt.sign(payload, formatedKey, options);
+    return {
+      token,
+    };
+  } catch (error) {
+    console.error('Error generating JWT:', error);
+    throw new Error('Failed to generate token');
+  }
 });
