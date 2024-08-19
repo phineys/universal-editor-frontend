@@ -25,10 +25,14 @@ export default defineEventHandler(async (event: H3Event) => {
     exp: Math.floor(Date.now() / 1000) + 24 * 60 * 60,
   };
 
+  console.log('PAYLOAD: ', payload);
+
   // Define options for JWT
   const options = {
     algorithm: 'RS256' as const,
   };
+
+  console.log('OPTIONS: ', options);
 
   try {
     const token = jwt.sign(JSON.stringify(payload), formatedKey, options);
