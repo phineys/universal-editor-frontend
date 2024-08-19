@@ -7,6 +7,10 @@ export default defineEventHandler(async (event: H3Event) => {
   const imsEndpoint = useRuntimeConfig().public.aemImsEndpoint;
   const privateKey = useRuntimeConfig().public.aemPrivateKey;
 
+  if (!clientId || !imsEndpoint || !privateKey) {
+    throw new Error('Missing configuration values');
+  }
+
   const formatedKey = privateKey.replace(/\\n/g, '\n').replace(/\\r/g, '');
 
   if (!formatedKey) {
@@ -24,7 +28,6 @@ export default defineEventHandler(async (event: H3Event) => {
   // Define options for JWT
   const options = {
     algorithm: 'RS256',
-    //   expiresIn: Math.floor(Date.now() / 1000) + (24 * 60 * 60),
   };
 
   try {
