@@ -18,7 +18,7 @@
     "@nuxtjs/i18n": "^8.3.1",
     "@storybook/addon-a11y": "^8.1.10",
     "jsonwebtoken": "^9.0.2",
-    "nuxt": "^3.11.2",
+    "nuxt": "^3.12.4",
     "nuxt-storybook": "^0.0.0",
     "typescript": "^5.5.2",
     "vue": "^3.4.27",

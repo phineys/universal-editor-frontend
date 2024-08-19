@@ -16,6 +16,7 @@ export default defineNuxtConfig({
         aemImsEndpoint: process.env.IMS_ENDPOINT || ''
     }
   },
+
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
 
@@ -62,6 +63,7 @@ export default defineNuxtConfig({
   },
 
   modules: ['@nuxt/image', '@nuxtjs/i18n', '@nuxtjs/storybook', "@nuxthub/core"],
+
   i18n: {
     lazy: true,
     langDir: 'locales',
@@ -76,5 +78,7 @@ export default defineNuxtConfig({
       cookieKey: 'i18n_redirected',
       redirectOn: 'root' // recommended
     }
-  }
+  },
+
+  compatibilityDate: '2024-08-19'
 })
