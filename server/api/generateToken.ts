@@ -32,7 +32,7 @@ export default defineEventHandler(async (event: H3Event) => {
 
   try {
     // const token = jwt.sign(JSON.stringify(payload), formatedKey, options);
-    var token = jwt.sign('test', 'shhhhh');
+    var token = jwt.sign();
     return 'token';
   } catch (error) {
     console.error('Error generating JWT:', error);
