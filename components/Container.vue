@@ -28,12 +28,10 @@ function extractAndRemoveNestedObjects(obj) {
   return nestedObjects;
 }
 
-onMounted(async () => {
-  containerData.value = await fetchData(props.resource);
-  console.log(containerData.value);
-  nestedObjects.value = extractAndRemoveNestedObjects(containerData.value);
-  console.log(nestedObjects.value);
-});
+containerData.value = await fetchData(props.resource);
+console.log(containerData.value);
+nestedObjects.value = extractAndRemoveNestedObjects(containerData.value);
+console.log(nestedObjects.value);
 
 const nameToComponent = {
   'pf/components/hero': Hero,
@@ -54,7 +52,7 @@ const nameToComponent = {
     <p>{{ nestedObjects }}</p>
     <component
       :is="nameToComponent[component.value['sling:resourceType']]"
-      v-for="(component, i) in nestedObjects"
+      v-for="(component, i) in nestedObjects.value"
       :key="i"
       :resource="`${props.resource}/${component.key}`"
     />
