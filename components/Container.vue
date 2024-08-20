@@ -12,7 +12,7 @@ const props = defineProps({
   },
 });
 
-const containerData = fetchData(props.resource);
+const containerData = await fetchData(props.resource);
 
 interface JSONObject {
   [key: string]: any;
