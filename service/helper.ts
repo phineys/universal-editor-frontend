@@ -13,11 +13,11 @@ export const isUe = () => {
 };
 
 export const extractAndRemoveNestedObjects = (obj: any) => {
-  console.log('originalObject', obj);
-  const objCopy = { ...obj };
+  console.log('originalObject', obj._value);
+  const objCopy = { ...obj._value };
   const nestedObjects = [];
 
-  for (const key in objCopy.value) {
+  for (const key in objCopy) {
     if (objCopy.hasOwnProperty(key)) {
       nestedObjects.push({ key: key, value: objCopy[key] });
       delete objCopy[key];
