@@ -53,7 +53,6 @@ const nameToComponent = {
     data-aue-type="container"
   >
     <p>{{ nestedObjects }}</p>
-    <Hero :resource="`${props.resource}/${nestedObjects[0].key}`"></Hero>
     <component
       :is="nameToComponent[component.value['sling:resourceType']]"
       v-for="(component, i) in nestedObjects"
