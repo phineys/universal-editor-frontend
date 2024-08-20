@@ -5,6 +5,12 @@ import { isUe, extractAndRemoveNestedObjects } from '@/service/helper';
 // import KeyFacts from './KeyFacts.vue';
 // import TextImage from './TextImage.vue';
 
+const nameToComponent = {
+  // 'pf/components/hero': Hero,
+  // 'pf/components/keyfacts': KeyFacts,
+  // 'pf/components/textimage': TextImage
+};
+
 const props = defineProps({
   resource: {
     type: String,
@@ -31,20 +37,14 @@ if (error.value) {
   console.log('Error', error);
 }
 
-const clonedData = JSON.parse(JSON.stringify(containerData));
-
-const nameToComponent = {
-  // 'pf/components/hero': Hero,
-  // 'pf/components/keyfacts': KeyFacts,
-  // 'pf/components/textimage': TextImage
-};
+const formattedData = extractAndRemoveNestedObjects(containerData);
 </script>
 
 <template>
   <h2>Container Data</h2>
   <p>{{ containerData }}</p>
   <h2>Cloned Data</h2>
-  <p>{{ clonedData }}</p>
+  <p>{{ formattedData }}</p>
   <!-- <div
     v-if="loading"
     class="container"
