@@ -1,13 +1,13 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { isUe, extractAndRemoveNestedObjects } from '@/service/helper';
-// import Hero from './Hero.vue';
-// import KeyFacts from './KeyFacts.vue';
+import Hero from './Hero.vue';
+import KeyFacts from './KeyFacts.vue';
 // import TextImage from './TextImage.vue';
 
 const nameToComponent = {
-  // 'pf/components/hero': Hero,
-  // 'pf/components/keyfacts': KeyFacts,
+  'pf/components/hero': Hero,
+  'pf/components/keyfacts': KeyFacts,
   // 'pf/components/textimage': TextImage
 };
 
@@ -45,8 +45,7 @@ const formattedData = extractAndRemoveNestedObjects(containerData);
   <p>{{ containerData }}</p>
   <h2>Cloned Data</h2>
   <p>{{ formattedData }}</p>
-  <!-- <div
-    v-if="loading"
+  <div
     class="container"
     data-aue-filter="container"
     data-aue-model="container"
@@ -54,12 +53,11 @@ const formattedData = extractAndRemoveNestedObjects(containerData);
     :data-aue-resource="props.resource"
     data-aue-type="container"
   >
-    <p>{{ nestedObjects }}</p>
     <component
       :is="nameToComponent[component.value['sling:resourceType']]"
-      v-for="(component, i) in nestedObjects"
+      v-for="(component, i) in formattedData"
       :key="`${props.resource}/${component.key}`"
       :resource="`${props.resource}/${component.key}`"
     />
-  </div> -->
+  </div>
 </template>

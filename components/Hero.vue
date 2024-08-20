@@ -9,11 +9,23 @@ const props = defineProps({
   },
 });
 
-console.log('----HERO PROPS----');
-console.log(props.resource);
-const heroData = ref(await fetchData(props.resource));
-console.log('----HERO DATA----');
-console.log(heroData.value);
+const config = useRuntimeConfig();
+const baseUrl = isUe() === true ? config.public.devAuthor : config.public.devPublisher;
+
+const url = `${baseUrl}/${props.resource.split(':/')[1]}.tidy.infinity.json`;
+console.log('URL', url);
+
+const { data: heroData, error } = await useFetch('/api/get-content', {
+  method: 'POST',
+  body: {
+    isUE: isUe,
+    url: url,
+  },
+});
+
+if (error.value) {
+  console.log('Error', error);
+}
 </script>
 
 <template>
