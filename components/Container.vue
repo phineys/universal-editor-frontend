@@ -29,10 +29,10 @@ function extractAndRemoveNestedObjects(obj) {
   return nestedObjects;
 }
 
-onMounted(async () => {
-  nestedObjects.value = extractAndRemoveNestedObjects(containerData.value);
-  loading.value = true;
-});
+nestedObjects.value = extractAndRemoveNestedObjects(containerData.value);
+loading.value = true;
+
+// onMounted(async () => {});
 
 const nameToComponent = {
   'pf/components/hero': Hero,
