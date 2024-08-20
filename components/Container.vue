@@ -13,9 +13,6 @@ const props = defineProps({
   },
 });
 
-// const containerData = ref();
-const loading = ref(false);
-let nestedObjects = ref([]);
 
 const config = useRuntimeConfig();
 const baseUrl = isUe() === true ? config.public.devAuthor : config.public.devPublisher;
@@ -34,10 +31,6 @@ const { data: containerData, error } = await useFetch('/api/get-content', {
 if (error.value) {
   console.log('Error', error);
 }
-
-// nestedObjects = toRef(() => extractAndRemoveNestedObjects(containerData.value));
-// nestedObjects.value = extractAndRemoveNestedObjects(containerData.value);
-// loading.value = true;
 
 const nameToComponent = {
   // 'pf/components/hero': Hero,
