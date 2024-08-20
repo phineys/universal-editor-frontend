@@ -28,12 +28,12 @@ function extractAndRemoveNestedObjects(obj) {
   return nestedObjects;
 }
 
-containerData.value = await fetchData(props.resource);
-console.log(containerData.value);
-// console.log(containerData.value);
-// console.log("Extracted nested objects:", extractAndRemoveNestedObjects(containerData.value));
-nestedObjects.value = extractAndRemoveNestedObjects(containerData.value);
-console.log(nestedObjects.value);
+onMounted(async () => {
+  containerData.value = await fetchData(props.resource);
+  console.log(containerData.value);
+  nestedObjects.value = extractAndRemoveNestedObjects(containerData.value);
+  console.log(nestedObjects.value);
+});
 
 const nameToComponent = {
   'pf/components/hero': Hero,
