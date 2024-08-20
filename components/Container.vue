@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue';
+import { fetchData } from '@/service/getContent';
 import Hero from './Hero.vue';
 import KeyFacts from './KeyFacts.vue';
 // import TextImage from './TextImage.vue';
