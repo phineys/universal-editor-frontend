@@ -1,32 +1,17 @@
-<script setup lang="ts">
-import { fetchData } from '@/service/getContent';
-import Hero from '@/components/Hero.vue';
-import KeyFacts from '@/components/KeyFacts.vue';
-// import TextImage from '@/components/TextImage.vue'
+<script setup>
+import { ref, onMounted } from 'vue';
+import Hero from './Hero.vue';
+import KeyFacts from './KeyFacts.vue';
+// import TextImage from './TextImage.vue';
 
-const props = defineProps({
-  resource: {
-    type: String,
-    default: '',
-    required: true,
-  },
-});
+const containerData = ref();
 
-const containerData = await fetchData(props.resource);
+const nestedObjects = ref([]);
 
-interface JSONObject {
-  [key: string]: any;
-}
-
-interface NestedObject {
-  key: string;
-  value: JSONObject;
-}
-
-function extractAndRemoveNestedObjects(obj: JSONObject): NestedObject[] {
-  const nestedObjects: NestedObject[] = [];
+function extractAndRemoveNestedObjects(obj) {
+  const nestedObjects = [];
   for (const key in obj) {
-    if (obj.hasOwnProperty(key) && typeof obj[key] === 'object' && !Array.isArray(obj[key])) {
+    if (obj.hasOwnProperty(key)) {
       nestedObjects.push({ key: key, value: obj[key] });
       delete obj[key];
     }
@@ -34,9 +19,11 @@ function extractAndRemoveNestedObjects(obj: JSONObject): NestedObject[] {
   return nestedObjects;
 }
 
-console.log(containerData.value);
-const nestedObjects = extractAndRemoveNestedObjects(containerData.value);
-console.log(nestedObjects);
+onMounted(() => {
+  console.log(containerData.value);
+  nestedObjects.value = extractAndRemoveNestedObjects(containerData.value);
+  console.log(nestedObjects.value);
+});
 
 const nameToComponent = {
   'pf/components/hero': Hero,
