@@ -3,7 +3,6 @@ import { fetchData } from '@/service/getContent';
 import Hero from '@/components/Hero.vue';
 import KeyFacts from '@/components/KeyFacts.vue';
 // import TextImage from '@/components/TextImage.vue'
-import { ref, onMounted } from 'vue';
 
 const props = defineProps({
   resource: {
@@ -17,7 +16,7 @@ const { containerData, status, error, refresh, clear } = await useAsyncData(prop
   $fetch('getContainerData')
 );
 
-console.log('Container', containerData.value);
+console.log('Container', containerData);
 
 interface JSONObject {
   [key: string]: any;
@@ -39,7 +38,7 @@ function extractAndRemoveNestedObjects(obj: JSONObject): NestedObject[] {
   return nestedObjects;
 }
 
-const nestedObjects = extractAndRemoveNestedObjects(containerData.value);
+const nestedObjects = extractAndRemoveNestedObjects(containerData);
 
 const nameToComponent = {
   'pf/components/hero': Hero,
