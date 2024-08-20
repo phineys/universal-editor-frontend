@@ -12,12 +12,11 @@ const props = defineProps({
   },
 });
 
-const { containerData, status, error, refresh, clear } = await useAsyncData(
-  'getContainerData',
-  () => $fetch(props.resource)
+const { data, status, error, refresh, clear } = await useAsyncData('getContainerData', () =>
+  $fetch(props.resource)
 );
 
-console.log('Container', containerData);
+console.log('Container', data.value);
 
 interface JSONObject {
   [key: string]: any;
@@ -39,7 +38,7 @@ function extractAndRemoveNestedObjects(obj: JSONObject): NestedObject[] {
   return nestedObjects;
 }
 
-const nestedObjects = extractAndRemoveNestedObjects(containerData);
+const nestedObjects = data.value ? extractAndRemoveNestedObjects(data.value) : [];
 
 const nameToComponent = {
   'pf/components/hero': Hero,
