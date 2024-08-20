@@ -14,7 +14,7 @@ export const fetchData = async (path: String) => {
 
   const url = `${isUE ? useRuntimeConfig().public.devAuthor : useRuntimeConfig().public.devPublisher}/${path.split(':/')[1]}.tidy.infinity.json`;
 
-  if (!isUE) {
+  if (isUE) {
     const { data } = await useFetch('/api/generateToken');
     token = data?.value;
     fetchOptions = {
@@ -24,6 +24,8 @@ export const fetchData = async (path: String) => {
     };
   }
   try {
+    console.log("fetching data from: ", url);
+    console.log("fetchOptions: ", fetchOptions);
     const data = await fetch(url, fetchOptions);
     const json = await data.json();
     console.log('DATA: ', json);
