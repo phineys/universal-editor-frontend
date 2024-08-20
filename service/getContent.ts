@@ -28,7 +28,7 @@ export const fetchData = async (path: String) => {
     console.log('Error', error);
   }
 
-  console.log('DATA: ', data);
+  console.log('DATA: ', data.value);
 
   return data;
 };
