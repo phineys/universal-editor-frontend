@@ -23,7 +23,7 @@ const baseUrl = isUe() === true ? config.public.devAuthor : config.public.devPub
 const url = `${baseUrl}/${props.resource.split(':/')[1]}.tidy.infinity.json`;
 console.log('URL', url);
 
-const { data, error } = await useFetch('/api/get-content', {
+const { data: containerData, error } = await useFetch('/api/get-content', {
   method: 'POST',
   body: {
     isUE: isUe,
@@ -34,9 +34,6 @@ const { data, error } = await useFetch('/api/get-content', {
 if (error.value) {
   console.log('Error', error);
 }
-const containerData = ...data;
-
-const formattedData = extractAndRemoveNestedObjects(containerData);
 
 // nestedObjects = toRef(() => extractAndRemoveNestedObjects(containerData.value));
 // nestedObjects.value = extractAndRemoveNestedObjects(containerData.value);
@@ -50,10 +47,7 @@ const nameToComponent = {
 </script>
 
 <template>
-  <h2>containerData</h2>
   <p>{{ containerData }}</p>
-  <h2>formattedData</h2>
-  <p>{{ formattedData }}</p>
   <!-- <div
     v-if="loading"
     class="container"
