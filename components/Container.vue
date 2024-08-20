@@ -13,7 +13,7 @@ const props = defineProps({
   },
 });
 
-const containerData = ref();
+const containerData = ref(await fetchData(props.resource));
 
 const nestedObjects = ref([]);
 
@@ -29,7 +29,6 @@ function extractAndRemoveNestedObjects(obj) {
 }
 
 onMounted(async () => {
-  containerData.value = await fetchData(props.resource);
   console.log(containerData.value);
   nestedObjects.value = extractAndRemoveNestedObjects(containerData.value);
   console.log(nestedObjects.value);
