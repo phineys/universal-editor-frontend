@@ -34,8 +34,8 @@ function extractAndRemoveNestedObjects(obj: JSONObject): NestedObject[] {
   return nestedObjects;
 }
 
-console.log(containerData.value);
-const nestedObjects = extractAndRemoveNestedObjects(containerData.value);
+console.log(containerData);
+const nestedObjects = extractAndRemoveNestedObjects(containerData);
 console.log(nestedObjects);
 
 const nameToComponent = {
