@@ -10,6 +10,8 @@ const props = defineProps({
 });
 
 const heroData = ref(await fetchData(props.resource));
+console.log('----HERO DATA----');
+console.log(heroData.value);
 </script>
 
 <template>

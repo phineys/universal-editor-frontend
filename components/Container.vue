@@ -29,9 +29,7 @@ function extractAndRemoveNestedObjects(obj) {
 }
 
 onMounted(async () => {
-  console.log(containerData.value);
   nestedObjects.value = extractAndRemoveNestedObjects(containerData.value);
-  console.log(nestedObjects.value);
 });
 
 const nameToComponent = {
