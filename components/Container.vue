@@ -29,8 +29,7 @@ function extractAndRemoveNestedObjects(obj) {
 }
 
 onMounted(async () => {
-  containerData = await fetchData(props.resource);
-  console.log('Container Data: ', fetchData(props.resource));
+  containerData.value = await fetchData(props.resource);
   console.log(containerData.value);
   // nestedObjects.value = extractAndRemoveNestedObjects(containerData.value);
   // console.log(nestedObjects.value);
