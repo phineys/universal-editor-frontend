@@ -13,7 +13,6 @@ const props = defineProps({
   },
 });
 
-
 const config = useRuntimeConfig();
 const baseUrl = isUe() === true ? config.public.devAuthor : config.public.devPublisher;
 
@@ -32,6 +31,8 @@ if (error.value) {
   console.log('Error', error);
 }
 
+const clonedData = structuredClone(containerData);
+
 const nameToComponent = {
   // 'pf/components/hero': Hero,
   // 'pf/components/keyfacts': KeyFacts,
@@ -40,7 +41,10 @@ const nameToComponent = {
 </script>
 
 <template>
+  <h2>Container Data</h2>
   <p>{{ containerData }}</p>
+  <h2>Cloned Data</h2>
+  <p>{{ clonedData }}</p>
   <!-- <div
     v-if="loading"
     class="container"
