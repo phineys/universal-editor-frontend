@@ -41,7 +41,7 @@ const nameToComponent = {
 </script>
 
 <template>
-  <div
+  <!-- <div
     v-if="loading"
     class="container"
     data-aue-filter="container"
@@ -57,5 +57,5 @@ const nameToComponent = {
       :key="`${props.resource}/${component.key}`"
       :resource="`${props.resource}/${component.key}`"
     />
-  </div>
+  </div> -->
 </template>
