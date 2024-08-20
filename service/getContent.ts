@@ -1,8 +1,6 @@
 export const fetchData = async (path: String) => {
   var isInFrame = null;
   var iframeUrl = null;
-  var token = null;
-  var fetchOptions = {};
 
   if (typeof window !== 'undefined') {
     isInFrame = window.self !== window.top;
@@ -12,26 +10,17 @@ export const fetchData = async (path: String) => {
   const isUE = isInFrame && iframeUrl === 'https://experience.adobe.com/' ? true : false;
   console.log('ISUE: ', isUE);
 
-  const url = `${isUE ? useRuntimeConfig().public.devAuthor : useRuntimeConfig().public.devPublisher}/${path.split(':/')[1]}.tidy.infinity.json`;
+  const { data, error } = await useFetch('/api/get-content', {
+    method: 'POST',
+    body: {
+      isUE: isUE,
+      path: path,
+    },
+  });
 
-  if (isUE) {
-    const { data } = await useFetch('/api/generateToken');
-    token = data?.value;
-    console.log('TOKEN: ', token);
-    fetchOptions = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
+  if (error.value) {
+    console.log('Error', error);
   }
-  try {
-    console.log('fetching data from: ', url);
-    console.log('fetchOptions: ', fetchOptions);
-    const data = await fetch(url, fetchOptions);
-    const json = await data.json();
-    console.log('DATA: ', json);
-    return json;
-  } catch (error) {
-    return 'ERROR';
-  }
+
+  console.log('DATA: ', data);
 };

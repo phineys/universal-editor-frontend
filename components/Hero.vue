@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import { fetchData } from '@/service/getContent'
+import { fetchData } from '@/service/getContent';
 
 const props = defineProps({
   resource: {
     type: String,
     default: '',
-    required: true
-  }
-})
+    required: true,
+  },
+});
 
-let heroData = ref(await fetchData(props.resource))
+let heroData = ref(await fetchData(props.resource));
 </script>
 
 <template>
@@ -26,14 +26,15 @@ let heroData = ref(await fetchData(props.resource))
       data-aue-type="text"
       data-aue-label="title"
     >
-      {{ heroData.title }}
+      {{ heroData?.title }}
     </h2>
     <span
       class="hero__description mx-auto mt-6 text-xl leading-relaxed text-white"
       data-aue-prop="text"
       data-aue-type="richtext"
       data-aue-label="text"
-      v-html="heroData.text">
-  </span>
+      v-html="heroData?.text"
+    >
+    </span>
   </div>
 </template>
