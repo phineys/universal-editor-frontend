@@ -18,15 +18,15 @@ const loading = ref(false);
 let nestedObjects = ref([]);
 
 const config = useRuntimeConfig();
-const baseUrl = isUE === true ? config.public.devAuthor : config.public.devPublisher;
+const baseUrl = isUe() === true ? config.public.devAuthor : config.public.devPublisher;
 
-const url = `${baseUrl}/${path.split(':/')[1]}.tidy.infinity.json`;
+const url = `${baseUrl}/${props.resource.split(':/')[1]}.tidy.infinity.json`;
 console.log('URL', url);
 
 const { data: containerData, error } = await useFetch('/api/get-content', {
   method: 'POST',
   body: {
-    isUE: isUE,
+    isUE: isUe,
     url: url,
   },
 });
