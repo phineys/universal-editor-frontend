@@ -16,7 +16,7 @@ const props = defineProps({
 const containerData = ref(await fetchData(props.resource));
 const loading = ref(false);
 
-const nestedObjects = ref([]);
+let nestedObjects = ref([]);
 
 function extractAndRemoveNestedObjects(obj) {
   const nestedObjects = [];
