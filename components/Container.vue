@@ -4,6 +4,14 @@ import Hero from './Hero.vue';
 import KeyFacts from './KeyFacts.vue';
 // import TextImage from './TextImage.vue';
 
+const props = defineProps({
+  resource: {
+    type: String,
+    default: '',
+    required: true,
+  },
+});
+
 const containerData = ref();
 
 const nestedObjects = ref([]);
