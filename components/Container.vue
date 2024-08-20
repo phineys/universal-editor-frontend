@@ -1,17 +1,17 @@
 <script setup lang="ts">
-import { fetchData } from '@/service/getContent'
-import Hero from '@/components/Hero.vue'
-import KeyFacts from '@/components/KeyFacts.vue'
+import { fetchData } from '@/service/getContent';
+import Hero from '@/components/Hero.vue';
+import KeyFacts from '@/components/KeyFacts.vue';
 // import TextImage from '@/components/TextImage.vue'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted } from 'vue';
 
 const props = defineProps({
   resource: {
     type: String,
     default: '',
-    required: true
-  }
-})
+    required: true,
+  },
+});
 // const route = useRoute()
 // const data = ref<Content | null>(null)
 // const error = ref<string | null>(null)
@@ -27,39 +27,35 @@ const props = defineProps({
 // }
 // console.log('data', data.value)
 
-let containerData = ref(await fetchData(props.resource))
+let containerData = ref(await fetchData(props.resource));
 
 interface JSONObject {
-  [key: string]: any
+  [key: string]: any;
 }
 
 interface NestedObject {
-  key: string
-  value: JSONObject
+  key: string;
+  value: JSONObject;
 }
 
 function extractAndRemoveNestedObjects(obj: JSONObject): NestedObject[] {
-  const nestedObjects: NestedObject[] = []
+  const nestedObjects: NestedObject[] = [];
   for (const key in obj) {
-    if (
-      obj.hasOwnProperty(key) &&
-      typeof obj[key] === 'object' &&
-      !Array.isArray(obj[key])
-    ) {
-      nestedObjects.push({ key: key, value: obj[key] })
-      delete obj[key]
+    if (obj.hasOwnProperty(key) && typeof obj[key] === 'object' && !Array.isArray(obj[key])) {
+      nestedObjects.push({ key: key, value: obj[key] });
+      delete obj[key];
     }
   }
-  return nestedObjects
+  return nestedObjects;
 }
 
-const nestedObjects = extractAndRemoveNestedObjects(containerData.value)
+const nestedObjects = extractAndRemoveNestedObjects(containerData.value);
 
 const nameToComponent = {
   'pf/components/hero': Hero,
   'pf/components/keyfacts': KeyFacts,
   // 'pf/components/textimage': TextImage
-}
+};
 </script>
 
 <template>
@@ -71,6 +67,7 @@ const nameToComponent = {
     :data-aue-resource="props.resource"
     data-aue-type="container"
   >
+    <p>{{ nestedObjects }}</p>
     <component
       :is="nameToComponent[component.value['sling:resourceType']]"
       v-for="(component, i) in nestedObjects"
