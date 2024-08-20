@@ -1,22 +1,17 @@
 export default defineEventHandler(async (event) => {
   const body = await readBody(event);
-  const { path, isUE } = body;
+  const { url, isUE } = body;
 
   console.log('ROUTE');
-  console.log('PATH: ', path);
+  console.log('PATH: ', url);
   console.log('ISUE: ', isUE);
 
-  if (!path) {
+  if (!url) {
     throw createError({
       statusCode: 400,
       statusMessage: 'Missing "path" parameter',
     });
   }
-
-  const config = useRuntimeConfig();
-  const baseUrl = isUE === 'true' ? config.public.devAuthor : config.public.devPublisher;
-
-  const url = `${baseUrl}/${path.split(':/')[1]}.tidy.infinity.json`;
 
   const fetchOptions = {};
 
