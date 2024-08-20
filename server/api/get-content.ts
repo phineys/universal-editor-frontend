@@ -15,29 +15,26 @@ export default defineEventHandler(async (event) => {
 
   const fetchOptions = {};
 
-  if (isUE === 'true') {
-    const { data, error } = await useFetch('/api/generateToken');
-
-    if (error || !data || !data.value) {
+  if (isUE === true) {
+    const token = await $fetch('/api/generateToken').catch((error) => {
       throw createError({
         statusCode: 500,
-        statusMessage: 'Failed to retrieve authentication token',
+        statusMessage: `Failed get token from ${url}: ${error.message}`,
       });
-    }
+    });
+    console.log('TOKEN: ', token);
 
     fetchOptions.headers = {
-      Authorization: `Bearer ${data.value}`,
+      Authorization: `Bearer ${token}`,
     };
   }
 
-  const { response, error } = await useFetch(url, fetchOptions);
-
-  if (error) {
+  const response = await $fetch(url, fetchOptions).catch((error) => {
     throw createError({
-      statusCode: error.status,
-      statusMessage: error.statusText,
+      statusCode: 500,
+      statusMessage: `Failed to fetch data from ${url}: ${error.message}`,
     });
-  }
+  });
 
   return response;
 });
