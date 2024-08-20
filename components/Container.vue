@@ -30,7 +30,7 @@ function extractAndRemoveNestedObjects(obj) {
 
 containerData.value = await fetchData(props.resource);
 console.log(containerData.value);
-console.log("Extracted nested objects:", extractAndRemoveNestedObjects(containerData-value));
+console.log("Extracted nested objects:", extractAndRemoveNestedObjects(containerData.value));
 nestedObjects.value = extractAndRemoveNestedObjects(containerData.value);
 console.log(nestedObjects.value);
 
