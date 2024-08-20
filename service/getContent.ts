@@ -30,5 +30,5 @@ export const fetchData = async (path: String) => {
 
   console.log('DATA: ', data.value);
 
-  return data;
+  return data.value;
 };
