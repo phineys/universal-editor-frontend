@@ -17,6 +17,7 @@ export const fetchData = async (path: String) => {
   if (isUE) {
     const { data } = await useFetch('/api/generateToken');
     token = data?.value;
+    console.log('TOKEN: ', token);
     fetchOptions = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -24,8 +25,8 @@ export const fetchData = async (path: String) => {
     };
   }
   try {
-    console.log("fetching data from: ", url);
-    console.log("fetchOptions: ", fetchOptions);
+    console.log('fetching data from: ', url);
+    console.log('fetchOptions: ', fetchOptions);
     const data = await fetch(url, fetchOptions);
     const json = await data.json();
     console.log('DATA: ', json);
