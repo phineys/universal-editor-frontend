@@ -34,7 +34,7 @@ const { data: containerData, error } = await useFetch('/api/get-content', {
 if (error.value) {
   console.log('Error', error);
 }
-const data = containerData.value;
+const data = toRef(() => containerData.value);
 
 const formattedData = extractAndRemoveNestedObjects(data);
 
