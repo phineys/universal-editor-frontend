@@ -35,7 +35,7 @@ if (error.value) {
   console.log('Error', error);
 }
 
-// nestedObjects = toRef(() => extractAndRemoveNestedObjects(containerData.value));
+nestedObjects = toRef(() => extractAndRemoveNestedObjects(containerData.value));
 // nestedObjects.value = extractAndRemoveNestedObjects(containerData.value);
 // loading.value = true;
 
@@ -47,7 +47,10 @@ const nameToComponent = {
 </script>
 
 <template>
+  <h2>containerData</h2>
   <p>{{ containerData }}</p>
+  <h2>Nested Object</h2>
+  <p>{{ nestedObjects }}</p>
   <!-- <div
     v-if="loading"
     class="container"
