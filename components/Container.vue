@@ -2,7 +2,7 @@
 import { fetchData } from '@/service/getContent'
 import Hero from '@/components/Hero.vue'
 import KeyFacts from '@/components/KeyFacts.vue'
-import TextImage from '@/components/TextImage.vue'
+// import TextImage from '@/components/TextImage.vue'
 import { ref, onMounted } from 'vue'
 
 const props = defineProps({
@@ -58,7 +58,7 @@ const nestedObjects = extractAndRemoveNestedObjects(containerData.value)
 const nameToComponent = {
   'pf/components/hero': Hero,
   'pf/components/keyfacts': KeyFacts,
-  'pf/components/textimage': TextImage
+  // 'pf/components/textimage': TextImage
 }
 </script>
 

@@ -9,7 +9,7 @@ const props = defineProps({
   },
 });
 
-let heroData = ref(await fetchData(props.resource));
+let heroData = await fetchData(props.resource);
 </script>
 
 <template>
@@ -33,8 +33,7 @@ let heroData = ref(await fetchData(props.resource));
       data-aue-prop="text"
       data-aue-type="richtext"
       data-aue-label="text"
-      v-html="heroData?.text"
-    >
+    >{{ heroData?.text }}
     </span>
   </div>
 </template>
