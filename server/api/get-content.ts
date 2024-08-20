@@ -30,12 +30,14 @@ export default defineEventHandler(async (event) => {
     };
   }
 
-  const response = await $fetch(url, fetchOptions).catch((error) => {
+  const { response, error } = await useFetch(url, fetchOptions);
+
+  if (error) {
     throw createError({
-      statusCode: 500,
-      statusMessage: `Failed to fetch data from ${url}: ${error.message}`,
+      statusCode: error.status,
+      statusMessage: error.statusText,
     });
-  });
+  }
 
   return response;
 });
