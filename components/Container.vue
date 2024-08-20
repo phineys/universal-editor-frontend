@@ -34,7 +34,7 @@ function extractAndRemoveNestedObjects(obj: JSONObject): NestedObject[] {
   return nestedObjects;
 }
 
-const nestedObjects = data.value ? extractAndRemoveNestedObjects(data.value) : [];
+const nestedObjects = containerData.value ? extractAndRemoveNestedObjects(containerData.value) : [];
 
 const nameToComponent = {
   'pf/components/hero': Hero,
