@@ -12,8 +12,9 @@ const props = defineProps({
   },
 });
 
-const { containerData, status, error, refresh, clear } = await useAsyncData(props.resource, () =>
-  $fetch('getContainerData')
+const { containerData, status, error, refresh, clear } = await useAsyncData(
+  'getContainerData',
+  () => $fetch(props.resource)
 );
 
 console.log('Container', containerData);
