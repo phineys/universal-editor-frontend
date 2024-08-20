@@ -52,7 +52,7 @@ const nameToComponent = {
     <p>{{ nestedObjects }}</p>
     <component
       :is="nameToComponent[component.value['sling:resourceType']]"
-      v-for="(component, i) in nestedObjects.value"
+      v-for="(component, i) in nestedObjects"
       :key="i"
       :resource="`${props.resource}/${component.key}`"
     />
