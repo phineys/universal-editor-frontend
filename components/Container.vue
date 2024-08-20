@@ -35,7 +35,7 @@ if (error.value) {
   console.log('Error', error);
 }
 
-const formattedData = extractAndRemoveNestedObjects(containerData.value);
+const formattedData = extractAndRemoveNestedObjects(toRef(() => containerData.value));
 
 // nestedObjects = toRef(() => extractAndRemoveNestedObjects(containerData.value));
 // nestedObjects.value = extractAndRemoveNestedObjects(containerData.value);
