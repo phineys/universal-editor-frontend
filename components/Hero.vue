@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { fetchData } from '@/service/getContent';
+import { isUe } from '@/service/helper';
 
 const props = defineProps({
   resource: {
@@ -18,7 +18,7 @@ console.log('URL', url);
 const { data: heroData, error } = await useFetch('/api/get-content', {
   method: 'POST',
   body: {
-    isUE: isUe,
+    isUE: isUe(),
     url: url,
   },
 });

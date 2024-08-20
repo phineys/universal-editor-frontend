@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { fetchData } from '@/service/getContent';
+import { isUe } from '@/service/helper';
 
 const runtimeConfig = useRuntimeConfig();
 
@@ -19,7 +19,7 @@ console.log('URL', url);
 const { data: factsData, error } = await useFetch('/api/get-content', {
   method: 'POST',
   body: {
-    isUE: isUe,
+    isUE: isUe(),
     url: url,
   },
 });

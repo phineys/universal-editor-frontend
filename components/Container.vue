@@ -28,7 +28,7 @@ console.log('URL', url);
 const { data: containerData, error } = await useFetch('/api/get-content', {
   method: 'POST',
   body: {
-    isUE: isUe,
+    isUE: isUe(),
     url: url,
   },
 });
