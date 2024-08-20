@@ -9,7 +9,7 @@ const props = defineProps({
   },
 });
 
-let heroData = await fetchData(props.resource);
+const heroData = ref(await fetchData(props.resource));
 </script>
 
 <template>
@@ -33,7 +33,7 @@ let heroData = await fetchData(props.resource);
       data-aue-prop="text"
       data-aue-type="richtext"
       data-aue-label="text"
-    >{{ heroData?.text }}
+      >{{ heroData?.text }}
     </span>
   </div>
 </template>
