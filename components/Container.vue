@@ -31,7 +31,7 @@ if (error.value) {
   console.log('Error', error);
 }
 
-const clonedData = structuredClone(containerData);
+const clonedData = JSON.parse(JSON.stringify(containerData));
 
 const nameToComponent = {
   // 'pf/components/hero': Hero,
