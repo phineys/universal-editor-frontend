@@ -2,10 +2,6 @@ export default defineEventHandler(async (event) => {
   const body = await readBody(event);
   const { url, isUE } = body;
 
-  console.log('ROUTE');
-  console.log('PATH: ', url);
-  console.log('ISUE: ', isUE);
-
   if (!url) {
     throw createError({
       statusCode: 400,

@@ -14,7 +14,7 @@ export const fetchData = async (path: String) => {
   const baseUrl = isUE === true ? config.public.devAuthor : config.public.devPublisher;
 
   const url = `${baseUrl}/${path.split(':/')[1]}.tidy.infinity.json`;
-  console.log("URL", url);
+  console.log('URL', url);
 
   const { data, error } = await useFetch('/api/get-content', {
     method: 'POST',
@@ -27,8 +27,6 @@ export const fetchData = async (path: String) => {
   if (error.value) {
     console.log('Error', error);
   }
-
-  console.log('DATA: ', data.value);
 
   return data.value;
 };
