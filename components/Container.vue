@@ -44,7 +44,7 @@ const formattedData = extractAndRemoveNestedObjects(containerData);
   <h2>Container Data</h2>
   <p>{{ containerData }}</p>
   <h2>Cloned Data</h2>
-  <p>{{ formattedData }}</p>
+  <p>{{ formattedData.value }}</p>
   <div
     class="container"
     data-aue-filter="container"
@@ -53,11 +53,11 @@ const formattedData = extractAndRemoveNestedObjects(containerData);
     :data-aue-resource="props.resource"
     data-aue-type="container"
   >
-    <component
+    <!-- <component
       :is="nameToComponent[component.value['sling:resourceType']]"
       v-for="(component, i) in formattedData"
       :key="`${props.resource}/${component.key}`"
       :resource="`${props.resource}/${component.key}`"
-    />
+    /> -->
   </div>
 </template>
