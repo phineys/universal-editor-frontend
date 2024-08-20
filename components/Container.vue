@@ -12,22 +12,12 @@ const props = defineProps({
     required: true,
   },
 });
-// const route = useRoute()
-// const data = ref<Content | null>(null)
-// const error = ref<string | null>(null)
 
-// const { data: responseData, error: fetchError } = await useAsyncData<Content>('getContentData', () => {
-//   return $fetch(`/api/content?path=${props.resource}`)
-// })
+const { containerData, status, error, refresh, clear } = await useAsyncData(props.resource, () =>
+  $fetch('getContainerData')
+);
 
-// if (fetchError.value) {
-//   error.value = fetchError.value.message
-// } else {
-//   data.value = responseData.value
-// }
-// console.log('data', data.value)
-
-let containerData = ref(await fetchData(props.resource));
+console.log('Container', containerData.value);
 
 interface JSONObject {
   [key: string]: any;
