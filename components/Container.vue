@@ -30,7 +30,8 @@ function extractAndRemoveNestedObjects(obj) {
 }
 
 onMounted(async () => {
-  nestedObjects.value = extractAndRemoveNestedObjects(containerData.value);
+  nestedObjects = toRef(() => extractAndRemoveNestedObjects(containerData.value));
+  // nestedObjects.value = extractAndRemoveNestedObjects(containerData.value);
   loading.value = true;
 });
 
