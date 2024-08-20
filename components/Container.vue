@@ -1,8 +1,8 @@
 <script setup>
 import { ref, onMounted } from 'vue';
-import { fetchData } from '@/service/getContent';
-import Hero from './Hero.vue';
-import KeyFacts from './KeyFacts.vue';
+import { isUe, extractAndRemoveNestedObjects } from '@/service/helper';
+// import Hero from './Hero.vue';
+// import KeyFacts from './KeyFacts.vue';
 // import TextImage from './TextImage.vue';
 
 const props = defineProps({
@@ -13,34 +13,41 @@ const props = defineProps({
   },
 });
 
-const containerData = ref(await fetchData(props.resource));
+// const containerData = ref();
 const loading = ref(false);
-
 let nestedObjects = ref([]);
 
-function extractAndRemoveNestedObjects(obj) {
-  const nestedObjects = [];
-  for (const key in obj) {
-    if (obj.hasOwnProperty(key)) {
-      nestedObjects.push({ key: key, value: obj[key] });
-      delete obj[key];
-    }
-  }
-  return nestedObjects;
+const config = useRuntimeConfig();
+const baseUrl = isUE === true ? config.public.devAuthor : config.public.devPublisher;
+
+const url = `${baseUrl}/${path.split(':/')[1]}.tidy.infinity.json`;
+console.log('URL', url);
+
+const { data: containerData, error } = await useFetch('/api/get-content', {
+  method: 'POST',
+  body: {
+    isUE: isUE,
+    url: url,
+  },
+});
+
+if (error.value) {
+  console.log('Error', error);
 }
 
-nestedObjects = toRef(() => extractAndRemoveNestedObjects(containerData.value));
+// nestedObjects = toRef(() => extractAndRemoveNestedObjects(containerData.value));
 // nestedObjects.value = extractAndRemoveNestedObjects(containerData.value);
-loading.value = true;
+// loading.value = true;
 
 const nameToComponent = {
-  'pf/components/hero': Hero,
-  'pf/components/keyfacts': KeyFacts,
+  // 'pf/components/hero': Hero,
+  // 'pf/components/keyfacts': KeyFacts,
   // 'pf/components/textimage': TextImage
 };
 </script>
 
 <template>
+  <p>{{ containerData }}</p>
   <!-- <div
     v-if="loading"
     class="container"
