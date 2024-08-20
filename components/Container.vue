@@ -41,10 +41,10 @@ const formattedData = extractAndRemoveNestedObjects(containerData);
 </script>
 
 <template>
-  <h2>Container Data</h2>
+  <!-- <h2>Container Data</h2>
   <p>{{ containerData }}</p>
   <h2>Cloned Data</h2>
-  <p>{{ formattedData }}</p>
+  <p>{{ formattedData }}</p> -->
   <div
     class="container"
     data-aue-filter="container"
