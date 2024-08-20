@@ -9,6 +9,8 @@ const props = defineProps({
   },
 });
 
+console.log('----HERO PROPS----');
+console.log(props.resource);
 const heroData = ref(await fetchData(props.resource));
 console.log('----HERO DATA----');
 console.log(heroData.value);

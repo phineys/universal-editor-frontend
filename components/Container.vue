@@ -14,6 +14,7 @@ const props = defineProps({
 });
 
 const containerData = ref(await fetchData(props.resource));
+const loading = ref(false);
 
 const nestedObjects = ref([]);
 
@@ -30,6 +31,7 @@ function extractAndRemoveNestedObjects(obj) {
 
 onMounted(async () => {
   nestedObjects.value = extractAndRemoveNestedObjects(containerData.value);
+  loading.value = true;
 });
 
 const nameToComponent = {
@@ -41,6 +43,7 @@ const nameToComponent = {
 
 <template>
   <div
+    v-if="loading"
     class="container"
     data-aue-filter="container"
     data-aue-model="container"
@@ -52,7 +55,7 @@ const nameToComponent = {
     <component
       :is="nameToComponent[component.value['sling:resourceType']]"
       v-for="(component, i) in nestedObjects"
-      :key="i"
+      :key="`${props.resource}/${component.key}`"
       :resource="`${props.resource}/${component.key}`"
     />
   </div>
