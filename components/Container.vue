@@ -12,13 +12,7 @@ const props = defineProps({
   },
 });
 
-console.log('Container-ressource', props.resource);
-
-const { data, status, error, refresh, clear } = await useAsyncData('getContainerData', () =>
-  $fetch(fetchData(props.resource))
-);
-
-console.log('Container', data.value);
+const containerData = fetchData(props.resource);
 
 interface JSONObject {
   [key: string]: any;
