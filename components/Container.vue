@@ -53,11 +53,11 @@ const formattedData = extractAndRemoveNestedObjects(containerData);
     :data-aue-resource="props.resource"
     data-aue-type="container"
   >
-    <!-- <component
+    <component
       :is="nameToComponent[component.value['sling:resourceType']]"
       v-for="(component, i) in formattedData"
       :key="`${props.resource}/${component.key}`"
       :resource="`${props.resource}/${component.key}`"
-    /> -->
+    />
   </div>
 </template>
