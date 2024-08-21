@@ -12,26 +12,6 @@ const props = defineProps({
     text: String,
   },
 });
-
-console.log(props);
-
-// const config = useRuntimeConfig();
-// const baseUrl = isUe() === true ? config.public.devAuthor : config.public.devPublisher;
-
-// const url = `${baseUrl}/${props.resource.split(':/')[1]}.tidy.infinity.json`;
-// console.log('URL', url);
-
-// const { data: heroData, error } = await useFetch('/api/get-content', {
-//   method: 'POST',
-//   body: {
-//     isUE: isUe(),
-//     url: url,
-//   },
-// });
-
-// if (error.value) {
-//   console.log('Error', error);
-// }
 </script>
 
 <template>

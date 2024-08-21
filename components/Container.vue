@@ -23,6 +23,7 @@ const config = useRuntimeConfig();
 const baseUrl = isUe() === true ? config.public.devAuthor : config.public.devPublisher;
 
 const url = `${baseUrl}/${props.resource.split(':/')[1]}.tidy.infinity.json`;
+console.log('URL', url);
 
 const { data: containerData, error } = await useFetch('/api/get-content', {
   method: 'POST',
@@ -35,6 +36,8 @@ const { data: containerData, error } = await useFetch('/api/get-content', {
 if (error.value) {
   console.log('Error', error);
 }
+
+const formattedData = extractAndRemoveNestedObjects(containerData);
 </script>
 
 <template>
@@ -48,7 +51,7 @@ if (error.value) {
   >
     <component
       :is="nameToComponent[component.value['sling:resourceType']]"
-      v-for="(component, i) in extractAndRemoveNestedObjects(containerData)"
+      v-for="(component, i) in formattedData"
       :key="`${props.resource}/${component.key}`"
       :resource="`${props.resource}/${component.key}`"
       :values="getComponentProps(component.value)"
