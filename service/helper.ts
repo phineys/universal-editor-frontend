@@ -1,3 +1,5 @@
+import model from '../public/model-definition.json';
+
 export const isUe = () => {
   var isInFrame = null;
   var iframeUrl = null;
@@ -28,15 +30,17 @@ export const extractAndRemoveNestedObjects = (obj: any) => {
 };
 
 export const getComponentProps = (component: any) => {
-  switch (component['sling:resourceType']) {
-    case 'pf/components/hero':
-      return {
-        title: component.title,
-        text: component.text,
-      };
-    case 'pf/components/keyfacts':
-      return {};
-    default:
-      return {};
+  const componentType = component['sling:resourceType'];
+  const dummyComponent = model.find((item: any) => `pf/components/${item.id}` === componentType);
+
+  if (!dummyComponent) {
+    return {};
   }
+
+  const props: any = {};
+  dummyComponent.fields.forEach((field: any) => {
+    props[field.name] = component[field.name];
+  });
+
+  return props;
 };

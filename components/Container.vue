@@ -37,6 +37,8 @@ if (error.value) {
   console.log('Error', error);
 }
 
+getComponentProps();
+
 const formattedData = extractAndRemoveNestedObjects(containerData);
 </script>
 

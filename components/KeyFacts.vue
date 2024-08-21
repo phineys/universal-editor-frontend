@@ -9,24 +9,18 @@ const props = defineProps({
     default: '',
     required: true,
   },
-});
-const config = useRuntimeConfig();
-const baseUrl = isUe() === true ? config.public.devAuthor : config.public.devPublisher;
-
-const url = `${baseUrl}/${props.resource.split(':/')[1]}.tidy.infinity.json`;
-console.log('URL', url);
-
-const { data: factsData, error } = await useFetch('/api/get-content', {
-  method: 'POST',
-  body: {
-    isUE: isUe(),
-    url: url,
+  values: {
+    firstTitle: String,
+    firstText: String,
+    secondTitle: String,
+    secondText: String,
+    thirdTitle: String,
+    thirdText: String,
+    fourthTitle: String,
+    fourthText: String,
+    image: String,
   },
 });
-
-if (error.value) {
-  console.log('Error', error);
-}
 </script>
 
 <template>
@@ -45,7 +39,7 @@ if (error.value) {
         data-aue-type="text"
         data-aue-label="First Title"
       >
-        {{ factsData.firstTitle }}
+        {{ values?.firstTitle }}
       </p>
       <p
         class="text-xl font-normal text-white border-t border-gray-300 mt-1"
@@ -53,7 +47,7 @@ if (error.value) {
         data-aue-type="text"
         data-aue-label="First Text"
       >
-        {{ factsData.firstText }}
+        {{ values?.firstText }}
       </p>
 
       <p
@@ -62,7 +56,7 @@ if (error.value) {
         data-aue-type="text"
         data-aue-label="Second Title"
       >
-        {{ factsData.secondTitle }}
+        {{ values?.secondTitle }}
       </p>
       <p
         class="text-xl font-normal text-white border-t border-gray-300 mt-1"
@@ -70,7 +64,7 @@ if (error.value) {
         data-aue-type="text"
         data-aue-label="Second Text"
       >
-        {{ factsData.secondText }}
+        {{ values?.secondText }}
       </p>
     </div>
     <div
@@ -80,9 +74,9 @@ if (error.value) {
       data-aue-label="Image"
     >
       <nuxt-picture
-        v-if="factsData.image"
+        v-if="values?.image"
         format="png,svg,jpeg,jpg"
-        :src="`${runtimeConfig?.public?.devAuthor}${factsData.image}`"
+        :src="`${runtimeConfig?.public?.devAuthor}${values?.image}`"
         alt="KeyFacts Image"
         :width="320"
         :height="320"
@@ -100,7 +94,7 @@ if (error.value) {
         data-aue-type="text"
         data-aue-label="First Title"
       >
-        {{ factsData.firstTitle }}
+        {{ values?.firstTitle }}
       </p>
       <p
         class="text-xl font-normal text-white border-t border-gray-300 mt-1 mb-6 md:mb-0"
@@ -108,7 +102,7 @@ if (error.value) {
         data-aue-type="text"
         data-aue-label="First Text"
       >
-        {{ factsData.firstText }}
+        {{ values?.firstText }}
       </p>
 
       <p
@@ -117,7 +111,7 @@ if (error.value) {
         data-aue-type="text"
         data-aue-label="Second Title"
       >
-        {{ factsData.secondTitle }}
+        {{ values?.secondTitle }}
       </p>
       <p
         class="text-xl font-normal text-white border-t border-gray-300 mt-1 mb-6 md:mb-0"
@@ -125,7 +119,7 @@ if (error.value) {
         data-aue-type="text"
         data-aue-label="Second Text"
       >
-        {{ factsData.secondText }}
+        {{ values?.secondText }}
       </p>
     </div>
 
@@ -136,7 +130,7 @@ if (error.value) {
         data-aue-type="text"
         data-aue-label="Third Title"
       >
-        {{ factsData.thirdTitle }}
+        {{ values?.thirdTitle }}
       </p>
       <p
         class="text-xl font-normal text-white border-t border-gray-300 mt-1 mb-6 md:mb-0"
@@ -144,7 +138,7 @@ if (error.value) {
         data-aue-type="text"
         data-aue-label="Third Text"
       >
-        {{ factsData.thirdText }}
+        {{ values?.thirdText }}
       </p>
 
       <p
@@ -153,7 +147,7 @@ if (error.value) {
         data-aue-type="text"
         data-aue-label="Fourth Title"
       >
-        {{ factsData.fourthTitle }}
+        {{ values?.fourthTitle }}
       </p>
       <p
         class="text-xl font-normal text-white border-t border-gray-300 mt-1 mb-6 md:mb-0"
@@ -161,7 +155,7 @@ if (error.value) {
         data-aue-type="text"
         data-aue-label="Fourth Text"
       >
-        {{ factsData.fourthText }}
+        {{ values?.fourthText }}
       </p>
     </div>
   </div>

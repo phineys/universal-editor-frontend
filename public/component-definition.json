@@ -1,7 +1,7 @@
 {
   "groups": [
     {
-      "title": "General Components",
+      "title": "Landing Page",
       "id": "general",
       "components": [
         {
@@ -22,39 +22,6 @@
             "aem": {
               "page": {
                 "resourceType": "pf/components/keyfacts"
-              }
-            }
-          }
-        },
-        {
-          "title": "TextImage",
-          "id": "textimage",
-          "plugins": {
-            "aem": {
-              "page": {
-                "resourceType": "pf/components/textimage"
-              }
-            }
-          }
-        },
-        {
-          "title": "Icon Cards",
-          "id": "iconcards",
-          "plugins": {
-            "aem": {
-              "page": {
-                "resourceType": "pf/components/iconcards"
-              }
-            }
-          }
-        },
-        {
-          "title": "Icon Card",
-          "id": "iconcard",
-          "plugins": {
-            "aem": {
-              "page": {
-                "resourceType": "pf/components/iconcard"
               }
             }
           }
