@@ -39,7 +39,7 @@ console.log('URL', url);
 
 const fetchOptions = {};
 
-if (isUE === true) {
+if (isUE() === true) {
   const token = await $fetch('/api/generateToken').catch((error) => {
     throw createError({
       statusCode: 500,
