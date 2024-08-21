@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { isUe } from '@/service/helper';
+const config = useRuntimeConfig();
+const baseUrl = isUe() === true ? config.public.devAuthor : config.public.devPublisher;
 
 const runtimeConfig = useRuntimeConfig();
 
@@ -76,7 +78,7 @@ const props = defineProps({
       <nuxt-picture
         v-if="values?.image"
         format="png,svg,jpeg,jpg"
-        :src="`${runtimeConfig?.public?.devAuthor}${values?.image}`"
+        :src="`${baseUrl}${values?.image}`"
         alt="KeyFacts Image"
         :width="320"
         :height="320"
