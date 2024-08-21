@@ -43,8 +43,8 @@ const getComponentProps = (component) => {
   switch (component['sling:resourceType']) {
     case 'pf/components/hero':
       return {
-        title: component.value.title,
-        text: component.value.text,
+        title: component.title,
+        text: component.text,
       };
     case 'pf/components/keyfacts':
       return {};
@@ -72,7 +72,7 @@ const getComponentProps = (component) => {
       v-for="(component, i) in formattedData"
       :key="`${props.resource}/${component.key}`"
       :resource="`${props.resource}/${component.key}`"
-      :values="getComponentProps(component)"
+      :values="getComponentProps(component.value)"
     />
   </div>
 </template>
