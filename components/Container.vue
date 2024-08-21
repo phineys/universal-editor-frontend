@@ -56,7 +56,7 @@ const formattedData = extractAndRemoveNestedObjects(containerData);
       v-for="(component, i) in formattedData"
       :key="`${props.resource}/${component.key}`"
       :resource="`${props.resource}/${component.key}`"
-      :values="getComponentProps(component.value)"
+      :values="getComponentProps(component.value, component.value['sling:resourceType'])"
     />
   </div>
 </template>

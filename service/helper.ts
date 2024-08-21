@@ -29,20 +29,22 @@ export const extractAndRemoveNestedObjects = (obj: any) => {
   return nestedObjects;
 };
 
-export const getComponentProps = (component: any) => {
+export const getComponentProps = (component: any, ressourceType: string) => {
   console.log('component', component);
+  console.log('ressourceType', ressourceType);
 
-  const props: any = {};
-  const componentType = component['sling:resourceType'];
-  const componentModel = model.find((item: any) => `pf/components/${item.id}` === componentType);
-
-  if (!componentModel) {
+  if (!ressourceType || !model || !model.length || !component) {
     return {};
   }
 
-  componentModel.fields.forEach((field: any) => {
-    props[field.name] = component[field.name];
-  });
+  const props: any = {};
+  const componentModel = model.find((item: any) => `pf/components/${item.id}` === ressourceType);
+
+  if (componentModel && componentModel.fields) {
+    componentModel.fields.forEach((field: any) => {
+      props[field.name] = component[field.name];
+    });
+  }
 
   return props;
 };
