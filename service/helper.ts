@@ -30,17 +30,19 @@ export const extractAndRemoveNestedObjects = (obj: any) => {
 };
 
 export const getComponentProps = (component: any) => {
-  const componentType = component['sling:resourceType'];
-  const dummyComponent = model.find((item: any) => `pf/components/${item.id}` === componentType);
-
-  if (!dummyComponent) {
-    return {};
-  }
+  console.log('component', component);
 
   const props: any = {};
-  dummyComponent.fields.forEach((field: any) => {
-    props[field.name] = component[field.name];
-  });
+  // const componentType = component['sling:resourceType'];
+  // const componentModel = model.find((item: any) => `pf/components/${item.id}` === componentType);
+
+  // if (!componentModel) {
+  //   return {};
+  // }
+
+  // componentModel.fields.forEach((field: any) => {
+  //   props[field.name] = component[field.name];
+  // });
 
   return props;
 };
