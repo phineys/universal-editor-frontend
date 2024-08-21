@@ -75,6 +75,7 @@ const props = defineProps({
       data-aue-type="media"
       data-aue-label="Image"
     >
+      <p>URL: {{ baseUrl + values?.image }}</p>
       <nuxt-picture
         v-if="values?.image"
         format="png,svg,jpeg,jpg"
