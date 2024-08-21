@@ -32,15 +32,6 @@ export default defineEventHandler(async (event) => {
     });
   });
 
-  // Set no-cache headers
-  event.node.res.setHeader(
-    'Cache-Control',
-    'no-store, no-cache, must-revalidate, proxy-revalidate'
-  );
-  event.node.res.setHeader('Pragma', 'no-cache');
-  event.node.res.setHeader('Expires', '0');
-  event.node.res.setHeader('Surrogate-Control', 'no-store');
-
   event.headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
   event.headers.set('Pragma', 'no-cache');
   event.headers.set('Expires', '0');
