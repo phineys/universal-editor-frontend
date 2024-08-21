@@ -25,19 +25,44 @@ const baseUrl = isUe() === true ? config.public.devAuthor : config.public.devPub
 const url = `${baseUrl}/${props.resource.split(':/')[1]}.tidy.infinity.json`;
 console.log('URL', url);
 
-const { data: containerData, error } = await useFetch('/api/get-content', {
-  method: 'POST',
-  body: {
-    isUE: isUe(),
-    url: url,
-  },
-});
+// const { data: containerData, error } = await useFetch('/api/get-content', {
+//   method: 'POST',
+//   body: {
+//     isUE: isUe(),
+//     url: url,
+//   },
+// });
 
-if (error.value) {
-  console.log('Error', error);
+// if (error.value) {
+//   console.log('Error', error);
+// }
+
+const fetchOptions = {};
+
+if (isUE === true) {
+  const token = await $fetch('/api/generateToken').catch((error) => {
+    throw createError({
+      statusCode: 500,
+      statusMessage: `Failed get token from ${url}: ${error.message}`,
+    });
+  });
+  console.log('TOKEN: ', token);
+
+  fetchOptions.headers = {
+    Authorization: `Bearer ${token}`,
+    'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+    Pragma: 'no-cache',
+    Expires: '0',
+    'Surrogate-Control': 'no-store',
+  };
 }
 
-getComponentProps();
+const containerData = await $fetch(url, fetchOptions).catch((error) => {
+  throw createError({
+    statusCode: 500,
+    statusMessage: `Failed to fetch data from ${url}: ${error.message}`,
+  });
+});
 
 const formattedData = extractAndRemoveNestedObjects(containerData);
 </script>
