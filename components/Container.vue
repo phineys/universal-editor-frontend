@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
 import { isUe, extractAndRemoveNestedObjects, getComponentProps } from '@/service/helper';
 import Hero from './Hero.vue';
 import KeyFacts from './KeyFacts.vue';
@@ -19,9 +20,13 @@ const props = defineProps({
   },
 });
 
+const route = useRoute()
+const hasUeParam = route.query.mode === 'ue'
+console.log('HASuePARAM', hasUeParam);
+
 const config = useRuntimeConfig();
-const universalEditor = await isUe();
-const baseUrl = universalEditor ? config.public.devAuthor : config.public.devPublisher;
+// const universalEditor = await isUe();
+const baseUrl = hasUeParam ? config.public.devAuthor : config.public.devPublisher;
 
 const url = `${baseUrl}/${props.resource.split(':/')[1]}.tidy.infinity.json`;
 console.log('URL', url);
@@ -29,7 +34,7 @@ console.log('URL', url);
 const { data: containerData, error } = await useFetch('/api/get-content', {
   method: 'POST',
   body: {
-    isUE: universalEditor,
+    isUE: hasUeParam,
     url: url,
   },
 });
