@@ -33,16 +33,16 @@ export const getComponentProps = (component: any) => {
   console.log('component', component);
 
   const props: any = {};
-  // const componentType = component['sling:resourceType'];
-  // const componentModel = model.find((item: any) => `pf/components/${item.id}` === componentType);
+  const componentType = component['sling:resourceType'];
+  const componentModel = model.find((item: any) => `pf/components/${item.id}` === componentType);
 
-  // if (!componentModel) {
-  //   return {};
-  // }
+  if (!componentModel) {
+    return {};
+  }
 
-  // componentModel.fields.forEach((field: any) => {
-  //   props[field.name] = component[field.name];
-  // });
+  componentModel.fields.forEach((field: any) => {
+    props[field.name] = component[field.name];
+  });
 
   return props;
 };
