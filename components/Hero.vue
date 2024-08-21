@@ -46,14 +46,14 @@ const props = defineProps({
       data-aue-type="text"
       data-aue-label="title"
     >
-      {{ title }}
+      {{ values.title }}
     </h2>
     <span
       class="hero__description mx-auto mt-6 text-xl leading-relaxed text-white"
       data-aue-prop="text"
       data-aue-type="richtext"
       data-aue-label="text"
-      >{{ text }}
+      >{{ values.text }}
     </span>
   </div>
 </template>
