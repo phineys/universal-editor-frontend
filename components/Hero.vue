@@ -7,9 +7,13 @@ const props = defineProps({
     default: '',
     required: true,
   },
-  title: String,
-  text: String,
+  values: {
+    title: String,
+    text: String,
+  },
 });
+
+console.log(props);
 
 // const config = useRuntimeConfig();
 // const baseUrl = isUe() === true ? config.public.devAuthor : config.public.devPublisher;
@@ -44,14 +48,14 @@ const props = defineProps({
       data-aue-type="text"
       data-aue-label="title"
     >
-      {{ title }}
+      {{ values?.title }}
     </h2>
     <span
       class="hero__description mx-auto mt-6 text-xl leading-relaxed text-white"
       data-aue-prop="text"
       data-aue-type="richtext"
       data-aue-label="text"
-      >{{ text }}
+      >{{ values?.text }}
     </span>
   </div>
 </template>

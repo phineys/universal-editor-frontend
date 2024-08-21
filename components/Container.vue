@@ -38,6 +38,20 @@ if (error.value) {
 }
 
 const formattedData = extractAndRemoveNestedObjects(containerData);
+
+const getComponentProps = (component) => {
+  switch (component['sling:resourceType']) {
+    case 'pf/components/hero':
+      return {
+        title: component.value.title,
+        text: component.value.text,
+      };
+    case 'pf/components/keyfacts':
+      return {};
+    default:
+      return {};
+  }
+};
 </script>
 
 <template>
@@ -58,8 +72,7 @@ const formattedData = extractAndRemoveNestedObjects(containerData);
       v-for="(component, i) in formattedData"
       :key="`${props.resource}/${component.key}`"
       :resource="`${props.resource}/${component.key}`"
-      :title="component.value.title"
-      :text="component.value.text"
+      :values="getComponentProps(component.value)"
     />
   </div>
 </template>
