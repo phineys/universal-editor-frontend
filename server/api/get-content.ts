@@ -1,4 +1,5 @@
 export default defineEventHandler(async (event) => {
+  console.log(event);
   const body = await readBody(event);
   const { url, isUE } = body;
 
