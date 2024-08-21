@@ -26,3 +26,17 @@ export const extractAndRemoveNestedObjects = (obj: any) => {
   console.log('nestedObject', nestedObjects);
   return nestedObjects;
 };
+
+export const getComponentProps = (component: any) => {
+  switch (component['sling:resourceType']) {
+    case 'pf/components/hero':
+      return {
+        title: component.title,
+        text: component.text,
+      };
+    case 'pf/components/keyfacts':
+      return {};
+    default:
+      return {};
+  }
+};

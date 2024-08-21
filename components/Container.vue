@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue';
-import { isUe, extractAndRemoveNestedObjects } from '@/service/helper';
+import { isUe, extractAndRemoveNestedObjects, getComponentProps } from '@/service/helper';
 import Hero from './Hero.vue';
 import KeyFacts from './KeyFacts.vue';
 // import TextImage from './TextImage.vue';
@@ -23,7 +23,6 @@ const config = useRuntimeConfig();
 const baseUrl = isUe() === true ? config.public.devAuthor : config.public.devPublisher;
 
 const url = `${baseUrl}/${props.resource.split(':/')[1]}.tidy.infinity.json`;
-console.log('URL', url);
 
 const { data: containerData, error } = await useFetch('/api/get-content', {
   method: 'POST',
@@ -36,29 +35,9 @@ const { data: containerData, error } = await useFetch('/api/get-content', {
 if (error.value) {
   console.log('Error', error);
 }
-
-const formattedData = extractAndRemoveNestedObjects(containerData);
-
-const getComponentProps = (component) => {
-  switch (component['sling:resourceType']) {
-    case 'pf/components/hero':
-      return {
-        title: component.title,
-        text: component.text,
-      };
-    case 'pf/components/keyfacts':
-      return {};
-    default:
-      return {};
-  }
-};
 </script>
 
 <template>
-  <!-- <h2>Container Data</h2>
-  <p>{{ containerData }}</p>
-  <h2>Cloned Data</h2>
-  <p>{{ formattedData }}</p> -->
   <div
     class="container"
     data-aue-filter="container"
@@ -69,7 +48,7 @@ const getComponentProps = (component) => {
   >
     <component
       :is="nameToComponent[component.value['sling:resourceType']]"
-      v-for="(component, i) in formattedData"
+      v-for="(component, i) in extractAndRemoveNestedObjects(containerData)"
       :key="`${props.resource}/${component.key}`"
       :resource="`${props.resource}/${component.key}`"
       :values="getComponentProps(component.value)"
