@@ -58,6 +58,8 @@ const formattedData = extractAndRemoveNestedObjects(containerData);
       v-for="(component, i) in formattedData"
       :key="`${props.resource}/${component.key}`"
       :resource="`${props.resource}/${component.key}`"
+      :title="component.title"
+      :text="component.text"
     />
   </div>
 </template>

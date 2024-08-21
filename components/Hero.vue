@@ -7,25 +7,29 @@ const props = defineProps({
     default: '',
     required: true,
   },
-});
-
-const config = useRuntimeConfig();
-const baseUrl = isUe() === true ? config.public.devAuthor : config.public.devPublisher;
-
-const url = `${baseUrl}/${props.resource.split(':/')[1]}.tidy.infinity.json`;
-console.log('URL', url);
-
-const { data: heroData, error } = await useFetch('/api/get-content', {
-  method: 'POST',
-  body: {
-    isUE: isUe(),
-    url: url,
+  values: {
+    title: String,
+    text: String,
   },
 });
 
-if (error.value) {
-  console.log('Error', error);
-}
+// const config = useRuntimeConfig();
+// const baseUrl = isUe() === true ? config.public.devAuthor : config.public.devPublisher;
+
+// const url = `${baseUrl}/${props.resource.split(':/')[1]}.tidy.infinity.json`;
+// console.log('URL', url);
+
+// const { data: heroData, error } = await useFetch('/api/get-content', {
+//   method: 'POST',
+//   body: {
+//     isUE: isUe(),
+//     url: url,
+//   },
+// });
+
+// if (error.value) {
+//   console.log('Error', error);
+// }
 </script>
 
 <template>
@@ -42,14 +46,14 @@ if (error.value) {
       data-aue-type="text"
       data-aue-label="title"
     >
-      {{ heroData?.title }}
+      {{ title }}
     </h2>
     <span
       class="hero__description mx-auto mt-6 text-xl leading-relaxed text-white"
       data-aue-prop="text"
       data-aue-type="richtext"
       data-aue-label="text"
-      >{{ heroData?.text }}
+      >{{ text }}
     </span>
   </div>
 </template>
