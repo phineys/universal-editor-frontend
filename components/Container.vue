@@ -72,7 +72,7 @@ const getComponentProps = (component) => {
       v-for="(component, i) in formattedData"
       :key="`${props.resource}/${component.key}`"
       :resource="`${props.resource}/${component.key}`"
-      :values="getComponentProps(component.value)"
+      :values="getComponentProps(component)"
     />
   </div>
 </template>
