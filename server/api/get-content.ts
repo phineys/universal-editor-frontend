@@ -22,6 +22,10 @@ export default defineEventHandler(async (event) => {
 
     fetchOptions.headers = {
       Authorization: `Bearer ${token}`,
+      'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+      Pragma: 'no-cache',
+      Expires: '0',
+      'Surrogate-Control': 'no-store',
     };
   }
 
@@ -32,10 +36,10 @@ export default defineEventHandler(async (event) => {
     });
   });
 
-  event.headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
-  event.headers.set('Pragma', 'no-cache');
-  event.headers.set('Expires', '0');
-  event.headers.set('Surrogate-Control', 'no-store');
+  // event.headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+  // event.headers.set('Pragma', 'no-cache');
+  // event.headers.set('Expires', '0');
+  // event.headers.set('Surrogate-Control', 'no-store');
 
   return response;
 });
