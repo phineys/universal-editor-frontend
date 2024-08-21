@@ -32,5 +32,11 @@ export default defineEventHandler(async (event) => {
     });
   });
 
+  // Set no-cache headers
+  event.res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+  event.res.setHeader('Pragma', 'no-cache');
+  event.res.setHeader('Expires', '0');
+  event.res.setHeader('Surrogate-Control', 'no-store');
+
   return response;
 });
