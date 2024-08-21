@@ -2,6 +2,9 @@ export default defineEventHandler(async (event) => {
   const body = await readBody(event);
   const { url, isUE } = body;
 
+  console.log('SERVER #URL: ', url);
+  console.log('SERVER #isUE: ', isUE);
+
   if (!url) {
     throw createError({
       statusCode: 400,
