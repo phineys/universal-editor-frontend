@@ -33,7 +33,6 @@ const { data: containerData, error } = await useFetch('/api/get-content', {
     url: url,
   },
   server: false,
-  lazy: true,
 });
 
 if (error.value) {
