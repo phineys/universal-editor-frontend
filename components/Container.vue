@@ -32,7 +32,6 @@ const { data: containerData, error } = await useFetch('/api/get-content', {
     isUE: universalEditor,
     url: url,
   },
-  server: false,
 });
 
 if (error.value) {
