@@ -40,6 +40,8 @@ export default defineEventHandler(async (event) => {
     });
   });
 
+  console.log('RESPONSE: ', response);
+
   // event.headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
   // event.headers.set('Pragma', 'no-cache');
   // event.headers.set('Expires', '0');
