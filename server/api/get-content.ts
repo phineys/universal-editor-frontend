@@ -26,11 +26,11 @@ export default defineEventHandler(async (event) => {
 
     fetchOptions.headers = {
       Authorization: `Bearer ${token}`,
-      'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+      'Cache-Control': 'no-store, no-cache',
       Pragma: 'no-cache',
       Expires: '0',
-      'Surrogate-Control': 'no-store',
     };
+    console.log('FETCH OPTIONS: ', fetchOptions);
   }
 
   const response = await $fetch(url, fetchOptions).catch((error) => {
