@@ -33,12 +33,15 @@ export default defineEventHandler(async (event) => {
     console.log('FETCH OPTIONS: ', fetchOptions);
   }
 
-  const response = await $fetch(url, fetchOptions).catch((error) => {
+  let response;
+  try {
+    response = await $fetch(url, fetchOptions);
+  } catch (error) {
     throw createError({
       statusCode: 500,
       statusMessage: `Failed to fetch data from ${url}: ${error.message}`,
     });
-  });
+  }
 
   console.log('RESPONSE: ', response);
 
