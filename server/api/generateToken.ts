@@ -1,6 +1,6 @@
 import { H3Event } from 'h3';
 import * as jose from 'jose';
-  const auth = require('@adobe/jwt-auth');
+  import auth from '@adobe/jwt-auth';
   const runtimeConfig = useRuntimeConfig();
 
 export default defineEventHandler(async (event: H3Event) => {
