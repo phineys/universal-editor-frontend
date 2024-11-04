@@ -2,6 +2,6 @@
 
 <template>
   <div class="bg-primary">
-    <p>Translated Text: {{ $t('welcome') }}</p>
+    <p>{{ $t('welcome') }}</p>
   </div>
 </template>
