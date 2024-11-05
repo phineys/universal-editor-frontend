@@ -1,10 +1,11 @@
 export default defineEventHandler(async (event) => {
-  console.log(event);
   const body = await readBody(event);
   const { url, isUE } = body;
+  const runtimeConfig = useRuntimeConfig();
 
   console.log('SERVER #URL: ', url);
   console.log('SERVER #isUE: ', isUE);
+  console.log('runtimeConfig: ', runtimeConfig.public.aem);
 
   if (!url) {
     throw createError({
