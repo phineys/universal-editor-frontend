@@ -15,12 +15,12 @@ export default defineEventHandler(async (event: H3Event) => {
     metaScopes: runtimeConfig.public.aem.metaScopes,
     ims: runtimeConfig.public.aem.ims,
   }
-  try {
-    let tokenResponse = await auth(credentials);
+  // try {
+  //   let tokenResponse = await auth(credentials);
 
-    return tokenResponse.access_token;
-  } catch (error) {
-    console.error('Error generating token:', error);
-    throw new Error('Token generation failed');
-  }
+  //   return tokenResponse.access_token;
+  // } catch (error) {
+  //   console.error('Error generating token:', error);
+  //   throw new Error('Token generation failed');
+  // }
 });
