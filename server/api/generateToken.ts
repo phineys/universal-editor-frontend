@@ -5,7 +5,8 @@ import * as jose from 'jose';
 
 export default defineEventHandler(async (event: H3Event) => {
 
-
+console.log('Generating token');
+console.log('runtimeConfig: ', runtimeConfig);
   try {
        let tokenResponse = await auth({
          clientId: runtimeConfig?.public?.aem?.clientId, // Client Id
